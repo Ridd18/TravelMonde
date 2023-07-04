@@ -9,6 +9,9 @@ import { DestinationsCampingComponent } from './destinations-camping/destination
 import { DestinationsNationalComponent } from './destinations-national/destinations-national.component';
 import { DestinationsInternationalComponent } from './destinations-international/destinations-international.component';
 
+import { FormsModule } from '@angular/forms';
+import { ViewTrekComponent } from './view-trek/view-trek.component';
+
 
 @NgModule({
   declarations: [
@@ -17,11 +20,14 @@ import { DestinationsInternationalComponent } from './destinations-international
     DestinationsTreksComponent,
     DestinationsCampingComponent,
     DestinationsNationalComponent,
-    DestinationsInternationalComponent
+    DestinationsInternationalComponent,
+    ViewTrekComponent
   ],
   imports: [
     CommonModule,
-    DestinationsRoutingModule
-  ]
+    DestinationsRoutingModule,
+    FormsModule
+  ],
+  exports:[FormsModule]
 })
 export class DestinationsModule { }

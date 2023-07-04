@@ -30,7 +30,8 @@ body {
 
 .c-featurette {
   display: flex;
-  flex-flow: row nowrap;
+  flex-wrap: wrap;
+  /* flex-flow: row nowrap; */
   list-style: none;
   margin: 0;
   padding: 0 8px;
@@ -40,6 +41,7 @@ body {
 }
 .c-featurette__item {
   position: relative;
+  
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;

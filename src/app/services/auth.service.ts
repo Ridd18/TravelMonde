@@ -10,7 +10,7 @@ export class AuthService {
 
   
 
-  private apiServerUrl =  "http://localhost:3000/user"
+  private apiServerUrl =  "http://localhost:3000"
 
   constructor (private http:HttpClient) {
       
@@ -19,7 +19,7 @@ export class AuthService {
   singup(user: User): Observable<User> {
      
       console.log(user)
-      return  this.http.post<User>(`${this.apiServerUrl}/register`,user)
+      return  this.http.post<User>(`${this.apiServerUrl}/user/register`,user)
      
   }
 
@@ -28,7 +28,7 @@ export class AuthService {
       console.log(user)
 
       return this.http.post<User>(
-          `${this.apiServerUrl}/login`,
+          `${this.apiServerUrl}/user/login`,
           user
         );
   }
