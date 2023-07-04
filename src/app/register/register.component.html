@@ -1,0 +1,85 @@
+<app-navbar></app-navbar>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>RegisterForm</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="circleTop"></div>
+      <form #registerForm = "ngForm" (ngSubmit)="registerUser(registerForm)">
+      <div class="content">
+        <h1>Register</h1>
+        <div class="form-group">
+          <label for="">Name</label>
+          <br />
+          <input
+            type="name"
+            class="form"
+            ngModel
+            name="name"
+            id="name"
+            aria-describedby="helpId"
+            placeholder=""
+          />
+        </div>
+        <div class="form-group">
+          <label for="">Email</label>
+          <br />
+          <input
+            type="email"
+            class="form"
+            ngModel
+            name="email"
+            id="email"
+            aria-describedby="helpId"
+            placeholder=""
+          />
+        </div>
+        <div class="form-group">
+          <label for="">Phone Number</label>
+          <br />
+          <input
+            type="number"
+            class="form"
+            ngModel
+            name="phone"
+            id="phone"
+            aria-describedby="helpId"
+            placeholder=""
+          />
+        </div>
+        <div class="form-group">
+          <label for="">Password</label>
+          <br />
+          <input
+            type="password"
+            class="form"
+            ngModel
+            name="password"
+            id="password"
+            placeholder=""
+          />
+        </div>
+
+        <button type="button"><a (click)="registerUser(registerForm)">Register</a></button>
+      </div>
+    </form>
+      <div class="circleBottom"></div>
+    </div>
+
+
+  </body>
+</html>
