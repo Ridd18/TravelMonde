@@ -5,6 +5,7 @@ import { DestinationsTreksComponent } from './destinations-treks/destinations-tr
 import { DestinationsCampingComponent } from './destinations-camping/destinations-camping.component';
 import { DestinationsNationalComponent } from './destinations-national/destinations-national.component';
 import { DestinationsInternationalComponent } from './destinations-international/destinations-international.component';
+import { ViewTrekComponent } from './view-trek/view-trek.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: 'treks',
     component: DestinationsTreksComponent,
+  },
+  {
+    path: 'treks/:id',
+    component: ViewTrekComponent,
   },
   {
     path: 'camping',

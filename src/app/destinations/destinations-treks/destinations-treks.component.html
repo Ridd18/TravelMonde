@@ -7,9 +7,11 @@
       <img
         class="c-featurette__background"
         src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/911489/steve-long-607673-unsplash.jpg"
-      /><small class="c-featurette__category">{{trek?.price}}</small>
+      /><small class="c-featurette__category">{{ trek?.price }}</small>
       <h2 class="c-featurette__heading">{{ trek?.name }}</h2>
-      <button class="c-featurette__button">Discover</button>
+      <<a  [routerLink]="['/destinations/treks/', trek.trek_id]" routerLinkActive="active"
+      ><button class="c-featurette__button">Discover</button></a>
+      
     </li>
   </ul>
 </html>
