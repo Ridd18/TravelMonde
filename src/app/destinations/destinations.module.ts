@@ -12,6 +12,8 @@ import { DestinationsInternationalComponent } from './destinations-international
 import { FormsModule } from '@angular/forms';
 import { ViewTrekComponent } from './view-trek/view-trek.component';
 import { ViewCampingComponent } from './view-camping/view-camping.component';
+import { ViewNationalComponent } from './view-national/view-national.component';
+import { ViewInternationalComponent } from './view-international/view-international.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { ViewCampingComponent } from './view-camping/view-camping.component';
     DestinationsNationalComponent,
     DestinationsInternationalComponent,
     ViewTrekComponent,
-    ViewCampingComponent
+    ViewCampingComponent,
+    ViewNationalComponent,
+    ViewInternationalComponent
   ],
   imports: [
     CommonModule,

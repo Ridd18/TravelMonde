@@ -1,0 +1,68 @@
+
+<!-- <app-navigation></app-navigation> -->
+
+<input
+  type="hidden"
+  name="id"
+  ngModel="{{ nationalTour?.id }}"
+  class="form-control"
+  id="id"
+  placeholder="ID"
+/>
+
+
+<!DOCTYPE html>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+  crossorigin="anonymous"
+/>
+
+<div class="card-wrapper">
+  <div class="card">
+    <!-- card left -->
+    <div class="product-imgs">
+      <div class="img-display">
+        <img
+          [src]=""
+        />
+      </div>
+    </div>
+    <!-- card right -->
+    <div class="product-content">
+      <h2 class="product-title">{{ nationalTour?.name }}</h2>
+      <div class="product-price">
+        <p class="start-bid">Price: <span></span>{{ nationalTour?.price }}</p>
+      </div>
+      <div class="product-detail">
+        <h2>about this National Tour:</h2>
+        <b
+          ><p class="product-category">
+            National Tour Place: &nbsp; {{ nationalTour?.place }}
+          </p></b
+        >
+        <b
+          ><p class="product-description">
+            National Tour Days: &nbsp; {{ nationalTour?.days }}
+          </p></b
+        >
+        <b
+        ><p class="product-description">
+          National Tour Nights: &nbsp; {{ nationalTour?.nights }}
+        </p></b
+      >
+
+      </div>
+      <div class="purchase-info">
+        <button type="button" class="btn" >
+          Book your Camping &nbsp; <i class="fas fa fa-plus"></i>
+        </button>
+        <button type="button" class="btn" (click)="goBackToNationalTours()">
+          Back to campings &nbsp; <i class="fas fa fa-undo" ></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

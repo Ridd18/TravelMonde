@@ -7,6 +7,8 @@ import { DestinationsNationalComponent } from './destinations-national/destinati
 import { DestinationsInternationalComponent } from './destinations-international/destinations-international.component';
 import { ViewTrekComponent } from './view-trek/view-trek.component';
 import { ViewCampingComponent } from './view-camping/view-camping.component';
+import { ViewNationalComponent } from './view-national/view-national.component';
+import { ViewInternationalComponent } from './view-international/view-international.component';
 
 const routes: Routes = [
   {
@@ -34,8 +36,16 @@ const routes: Routes = [
     component: DestinationsNationalComponent,
   },
   {
+    path: 'national/:id',
+    component: ViewNationalComponent,
+  },
+  {
     path: 'international',
     component: DestinationsInternationalComponent,
+  },
+  {
+    path: 'international/:id',
+    component: ViewInternationalComponent,
   },
 ];
 
