@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Trek } from '../models/trekModel';
+import { Camping } from '../models/campingModel';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class DestinationsService {
       
 }
 
-    //Bidders
+    //Treks
     public getTreks(): Observable<Trek[]> {
       return this.http.get<Trek[]>(`${this.apiServerUrl}/trek`);
     }
@@ -32,6 +33,9 @@ export class DestinationsService {
       );
     }
   
+    public countTreks(): Observable<any> {
+      return this.http.get<any>(`${this.apiServerUrl}/camping/count`);
+    }
   
   
     // public deleteBuyerUser(Buyerid: number): Observable<void> {
@@ -40,8 +44,28 @@ export class DestinationsService {
     //   );
     // }
   
-    public countTreks(): Observable<any> {
-      return this.http.get<any>(`${this.apiServerUrl}/trek/count`);
-    }
-  
+
+
+      //Campings
+      public getCampings(): Observable<Camping[]> {
+        return this.http.get<Camping[]>(`${this.apiServerUrl}/camping`);
+      }
+    
+      public getCamping(id: number): Observable<Camping> {
+        return this.http.get<Camping>(
+          `${this.apiServerUrl}/camping/${id}`
+        );
+      }
+    
+      public addCamping(camping: Camping): Observable<Camping> {
+        return this.http.post<Camping>(
+          `${this.apiServerUrl}/camping/add`,
+          camping
+        );
+      }
+
+      public countCampings(): Observable<any> {
+        return this.http.get<any>(`${this.apiServerUrl}/trek/count`);
+      }
+
 }

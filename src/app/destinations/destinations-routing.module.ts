@@ -6,6 +6,7 @@ import { DestinationsCampingComponent } from './destinations-camping/destination
 import { DestinationsNationalComponent } from './destinations-national/destinations-national.component';
 import { DestinationsInternationalComponent } from './destinations-international/destinations-international.component';
 import { ViewTrekComponent } from './view-trek/view-trek.component';
+import { ViewCampingComponent } from './view-camping/view-camping.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'camping',
     component: DestinationsCampingComponent,
+  },
+  {
+    path: 'camping/:id',
+    component: ViewCampingComponent,
   },
   {
     path: 'national',

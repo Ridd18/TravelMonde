@@ -1,24 +1,24 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import {Router, ActivatedRoute, Params } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { Router,ActivatedRoute, Params } from '@angular/router';
+import { Camping } from 'src/app/models/campingModel';
 import { Trek } from 'src/app/models/trekModel';
 import { DestinationsService } from 'src/app/services/destinations.service';
 
 @Component({
-  selector: 'app-view-trek',
-  templateUrl: './view-trek.component.html',
-  styleUrls: ['./view-trek.component.css']
+  selector: 'app-view-camping',
+  templateUrl: './view-camping.component.html',
+  styleUrls: ['./view-camping.component.css']
 })
-export class ViewTrekComponent {
+export class ViewCampingComponent {
 
-  public treks: Trek[];
+  public campings: Camping[];
 
   selectedId: number;
 
   // public trek: Trek[];
 
-  trek: any;
+  camping: any;
 
   id: number;
 
@@ -28,23 +28,24 @@ export class ViewTrekComponent {
     private route: ActivatedRoute
   ) {}
 
+
   ngOnInit(): void {
-    this.getTreks();
+    this.getCampings();
 
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       console.log(this.id);
     });
-    this.getTrek(this.id);
+    this.getCamping(this.id);
   
     
   }
 
-  public getTrek(id: number) {
-    this.service.getTrek(this.id).subscribe(
+  public getCamping(id: number) {
+    this.service.getCamping(this.id).subscribe(
       (data) => {
         console.log(data);
-        this.trek = data;
+        this.camping = data;
       },
       (error) => {
         // this.getMaxBid(id);
@@ -55,11 +56,11 @@ export class ViewTrekComponent {
     );
   }
 
-  public getTreks(): void {
-    this.service.getTreks().subscribe(
-      (response: Trek[]) => {
-        this.treks = response;
-        console.log(this.treks)
+  public getCampings(): void {
+    this.service.getCampings().subscribe(
+      (response: Camping[]) => {
+        this.campings = response;
+        console.log(this.campings)
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -67,15 +68,12 @@ export class ViewTrekComponent {
     );
   }
 
-  public getAllTreks() {
-    this.getTreks();
+  public getAllCampings() {
+    this.getCampings();
   }
 
-  public goBackToTreks() {
-    this.router.navigate(['/destinations/treks']);
+  public goBackToCampings() {
+    this.router.navigate(['/destinations/camping']);
   }
 
-  // gotToAddBid() {
-  //   this.router.navigate(['/bidder/bid/', this.product.id]);
-  // }
 }

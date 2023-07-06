@@ -4,7 +4,7 @@
 <input
   type="hidden"
   name="id"
-  ngModel="{{ trek?.id }}"
+  ngModel="{{ camping?.id }}"
   class="form-control"
   id="id"
   placeholder="ID"
@@ -32,30 +32,30 @@
     </div>
     <!-- card right -->
     <div class="product-content">
-      <h2 class="product-title">{{ trek?.name }}</h2>
+      <h2 class="product-title">{{ camping?.name }}</h2>
       <div class="product-price">
-        <p class="start-bid">Price: <span></span>{{ trek?.price }}</p>
+        <p class="start-bid">Price: <span></span>{{ camping?.price }}</p>
       </div>
       <div class="product-detail">
-        <h2>about this Trek:</h2>
+        <h2>about this Camping:</h2>
         <b
           ><p class="product-category">
-            Trek Place: &nbsp; {{ trek?.place }}
+            Camping Place: &nbsp; {{ camping?.place }}
           </p></b
         >
         <b
           ><p class="product-description">
-            Trek Total Days: &nbsp; {{ trek?.days }}
+            Camping Total Days: &nbsp; {{ camping?.days }}
           </p></b
         >
 
       </div>
       <div class="purchase-info">
         <button type="button" class="btn" >
-          Book your Trek &nbsp; <i class="fas fa fa-plus"></i>
+          Book your Camping &nbsp; <i class="fas fa fa-plus"></i>
         </button>
-        <button type="button" class="btn" (click)="goBackToTreks()">
-          Back to Treks &nbsp; <i class="fas fa fa-undo" ></i>
+        <button type="button" class="btn" (click)="goBackToCampings()">
+          Back to campings &nbsp; <i class="fas fa fa-undo" ></i>
         </button>
       </div>
     </div>

@@ -1,7 +1,7 @@
 <app-destinations-nav></app-destinations-nav>
 
 <html>
-  <h1 class="c-title">Inspiration For Your <br />Next Vacation</h1>
+  <h1 class="c-title">Inspiration For Your <br />Next Trek</h1>
   <ul class="c-featurette">
     <li class="c-featurette__item" *ngFor="let trek of treks">
       <img
@@ -9,7 +9,7 @@
         src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/911489/steve-long-607673-unsplash.jpg"
       /><small class="c-featurette__category">{{ trek?.price }}</small>
       <h2 class="c-featurette__heading">{{ trek?.name }}</h2>
-      <<a  [routerLink]="['/destinations/treks/', trek.trek_id]" routerLinkActive="active"
+      <a  [routerLink]="['/destinations/treks/', trek.trek_id]" routerLinkActive="active"
       ><button class="c-featurette__button">Discover</button></a>
       
     </li>
