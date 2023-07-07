@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/userModel';
+import { Admin } from '../models/adminModel';
 
 @Injectable({
   providedIn: 'root'
@@ -32,4 +33,13 @@ export class AuthService {
           user
         );
   }
+
+  loginAdmin(admin:Admin): Observable<Admin> {
+    console.log(admin)
+
+    return this.http.post<Admin>(
+        `${this.apiServerUrl}/admin/login`,
+        admin
+      );
+}
 }
