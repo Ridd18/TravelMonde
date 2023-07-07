@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
+  {path:'home',component:HomeComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
 
@@ -19,9 +20,14 @@ const routes: Routes = [
       ),
   },
 
-  // {path:'destinations',component:DestinationsModule ,children: [ 
+  {
+    path: 'administration',
+    loadChildren: () =>
+      import('./administration/administration.module').then(
+        (m) => m.AdministrationModule
+      ),
+  },
 
-  // ]}
 ];
 
 @NgModule({
