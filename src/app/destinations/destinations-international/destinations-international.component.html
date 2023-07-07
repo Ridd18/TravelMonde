@@ -1,29 +1,16 @@
 <app-destinations-nav></app-destinations-nav>
 
 <html>
-    
-<h1 class="c-title">
-    Inspiration For Your <br/>Next Vacation</h1>
- <ul class="c-featurette">
-   <li class="c-featurette__item"><img class="c-featurette__background" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/911489/steve-long-607673-unsplash.jpg"/><small class="c-featurette__category">Summer</small>
-     <h2 class="c-featurette__heading">Bali</h2>
-     <button class="c-featurette__button">Discover</button>
-   </li>
-   <li class="c-featurette__item">  <img class="c-featurette__background" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/911489/mario-klassen-428384-unsplash.jpg"/><small class="c-featurette__category">Africa</small>
-     <h2 class="c-featurette__heading">Kenya</h2>
-     <button class="c-featurette__button">Discover</button>
-   </li>
-   <li class="c-featurette__item">  <img class="c-featurette__background" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/911489/nicolas-j-leclercq-785256-unsplash.jpg"/><small class="c-featurette__category">Popular</small>
-     <h2 class="c-featurette__heading">Iceland</h2>
-     <button class="c-featurette__button">Discover</button>
-   </li>
-   <li class="c-featurette__item">     <img class="c-featurette__background" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/911489/jonathan-gallegos-727409-unsplash.jpg"/><small class="c-featurette__category">Summer</small>
-     <h2 class="c-featurette__heading">Greece</h2>
-     <button class="c-featurette__button">Discover</button>
-   </li>
-   <li class="c-featurette__item">     <img class="c-featurette__background" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/911489/yunqing-leo-783078-unsplash.jpg"/><small class="c-featurette__category">City</small>
-     <h2 class="c-featurette__heading">Arizona</h2>
-     <button class="c-featurette__button">Discover</button>
-   </li>
- </ul>
+  <h1 class="c-title">Inspiration For Your <br />Next InterNational Tour</h1>
+  <ul class="c-featurette">
+    <li class="c-featurette__item" *ngFor="let internationalTour of internationalTours">
+      <img
+        class="c-featurette__background"
+        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/911489/nicolas-j-leclercq-785256-unsplash.jpg"
+      /><small class="c-featurette__category">{{ internationalTour?.price }}</small>
+      <h2 class="c-featurette__heading">{{ internationalTour?.name }}</h2>
+      <a  [routerLink]="['/destinations/international/', internationalTour.international_id]" routerLinkActive="active"
+      ><button class="c-featurette__button">Discover</button></a>
+    </li>
+  </ul>
 </html>
