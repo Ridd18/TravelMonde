@@ -1,0 +1,49 @@
+<html>
+  <head> </head>
+  <body>
+    <div class="user-card" *ngFor="let user of users">
+      <div class="user-card__background"></div>
+
+      <div class="user-card__content">
+        <div class="user-card__image-wrapper">
+          <label for="user-avatar-input" class="user-card__label"
+            ><span class="fa fa-upload"></span
+          ></label>
+          <h1 class="user-card__name" spellcheck="false">{{ user?.name }}</h1>
+        </div>
+        <div class="user_details">
+          <div class="user_email">
+            <div class="details">
+              <p class="user-card__email" spellcheck="false">
+                Email: &nbsp;{{ user?.email }}
+              </p>
+            </div>
+          </div>
+          <div class="user_phone">
+            <div class="details">
+              <p class="user-card__email" spellcheck="false">
+                Phone: &nbsp;{{ user?.phone }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="buttons">
+            <!-- <button class="c-featurette__button">Edit</button> -->
+            <button type="button">
+                <a>Edit</a>
+              </button>
+              <button type="button">
+                <a (click)="onDeleteuser(user.id)">Delete</a>
+              </button>
+        </div>
+        
+      </div>
+
+      <div class="user-card-socials">
+        <a href="#" class="social-icon fa fa-twitter"></a>
+        <a href="#" class="social-icon fa fa-linkedin"></a>
+        <a href="#" class="social-icon fa fa-codepen"></a>
+      </div>
+    </div>
+  </body>
+</html>
