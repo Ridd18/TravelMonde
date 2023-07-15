@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>RegisterForm</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="circleTop"></div>
+      <!-- <form #updateUserForm = "ngForm" (ngSubmit)="onUpdateUser(updateUserForm.value)"> -->
+        <form #updateUserForm = "ngForm" (ngSubmit)="onEditUser(userToEdit?.id,updateUserForm.value)">
+      <div class="content">
+        <h1>Update User</h1>
+        <div class="form-group">
+          <input
+          type="hidden"
+          name="id"
+          ngModel ="{{ userToEdit?.id }}"
+
+          class="form-control"
+          id="id"
+          placeholder="ID"
+        />
+          <label for="">Name</label>
+          <br />
+          <input
+            type="name"
+            class="form"
+            ngModel ="{{ userToEdit?.name }}"
+            name="name"
+            id="name"
+            aria-describedby="helpId"
+            placeholder=""
+          />
+        </div>
+        <div class="form-group">
+          <label for="">Email</label>
+          <br />
+          <input
+            type="email"
+            class="form"
+            ngModel ="{{ userToEdit?.email }}"
+            name="email"
+            id="email"
+            aria-describedby="helpId"
+            placeholder=""
+          />
+        </div>
+        <div class="form-group">
+          <label for="">Phone Number</label>
+          <br />
+          <input
+            type="number"
+            class="form"
+            ngModel ="{{ userToEdit?.phone }}"
+            name="phone"
+            id="phone"
+            aria-describedby="helpId"
+            placeholder=""
+          />
+        </div>
+    
+        <button type="button"><a (click)="    onEditUser(userToEdit?.id,updateUserForm.value)">Update</a></button>
+        <!-- <button type="button"><a (click)="onUpdateUser(updateUserForm.value)">Register</a></button> -->
+      </div>
+    </form>
+      <div class="circleBottom"></div>
+    </div>
+
+
+  </body>
+</html>

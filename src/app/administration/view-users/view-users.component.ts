@@ -1,6 +1,7 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs';
 import { User } from 'src/app/models/userModel';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -12,10 +13,23 @@ import { AuthService } from 'src/app/services/auth.service';
 export class ViewUsersComponent implements OnInit {
   public users: User[];
 
-  constructor(private router: Router, private service: AuthService) {}
+  user$: any;
+
+  selectedId: number;
+
+  constructor(private router: Router, private service: AuthService,  private http: HttpClient,
+    private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getUsers();
+
+    this.user$ = this.route.paramMap.pipe(
+      switchMap((params) => {
+        this.selectedId = Number(params.get('id'));
+        console.log(this.selectedId);
+        return this.service.getUsers();
+      })
+    );
   }
 
   public getUsers(): void {

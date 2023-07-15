@@ -30,7 +30,7 @@
         <div class="buttons">
             <!-- <button class="c-featurette__button">Edit</button> -->
             <button type="button">
-                <a>Edit</a>
+                <a [routerLink]="['/administration/users/edit/', user.id]" routerLinkActive="active">Edit</a>
               </button>
               <button type="button">
                 <a (click)="onDeleteuser(user.id)">Delete</a>

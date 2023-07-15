@@ -33,7 +33,28 @@ export class AuthService {
     return this.http.get<User[]>(`${this.apiServerUrl}/user`);
   }
 
+  public getUser(id: number): Observable<User> {
+    return this.http.get<User>(
+      `${this.apiServerUrl}/user/${id}`
+    );
+  }
+
   public deleteUser(Userid: number): Observable<void> {
     return this.http.delete<void>(`${this.apiServerUrl}/user/delete/${Userid}`);
   }
+
+  public editUser(id: number, value: any): Observable<Object> {
+    return this.http.put(
+      `${this.apiServerUrl}/user/edit/${id}`,
+      value
+    );
+  }
+
+  public updateUser(user: User): Observable<User> {
+    return this.http.put<User>(
+      `${this.apiServerUrl}/user/update`,
+      user
+    );
+  }
+
 }
