@@ -14,12 +14,13 @@ import { ViewTrekComponent } from './view-trek/view-trek.component';
 import { ViewCampingComponent } from './view-camping/view-camping.component';
 import { ViewNationalComponent } from './view-national/view-national.component';
 import { ViewInternationalComponent } from './view-international/view-international.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    DestinationsNavComponent,
-    DestinationsHomeComponent,
+    // DestinationsNavComponent,
+    // DestinationsHomeComponent,
     DestinationsTreksComponent,
     DestinationsCampingComponent,
     DestinationsNationalComponent,
@@ -32,7 +33,8 @@ import { ViewInternationalComponent } from './view-international/view-internatio
   imports: [
     CommonModule,
     DestinationsRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   exports:[FormsModule]
 })
