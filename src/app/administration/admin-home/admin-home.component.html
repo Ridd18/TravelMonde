@@ -65,7 +65,7 @@
                       class="h6 font-semibold text-muted text-sm d-block mb-2"
                       >Users</span
                     >
-                    <span class="h3 font-bold mb-0">215</span>
+                    <span class="h3 font-bold mb-0">{{this.finalUserCount}}</span>
                   </div>
                   <div class="col-auto">
                     <div
@@ -88,7 +88,16 @@
                       class="h6 font-semibold text-muted text-sm d-block mb-2"
                       >Collections</span
                     >
-                    <span class="h3 font-bold mb-0">1.400</span>
+                    <span class="h3 font-bold mb-0">{{this.finalTotal}}</span><br>
+                     <span class="text-nowrap text-xs text-muted"
+                    >Treks {{ this.finalTrekCount }}</span><br>
+                   
+                    <span class="text-nowrap text-xs text-muted"
+                    >Camps {{ this.finalCampingCount }}</span><br>
+                    <span class="text-nowrap text-xs text-muted"
+                    >National {{ this.finalNationalCount }}</span><br>
+                    <span class="text-nowrap text-xs text-muted"
+                    >International {{ this.finalInternationalCount }}</span>
                   </div>
                   <div class="col-auto">
                     <div

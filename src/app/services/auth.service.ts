@@ -57,4 +57,9 @@ export class AuthService {
     );
   }
 
+  public countUsers(): Observable<any> {
+    return this.http.get<any>(`${this.apiServerUrl}/user/count`);
+  }
+
+
 }

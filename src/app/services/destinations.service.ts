@@ -36,7 +36,7 @@ export class DestinationsService {
     }
   
     public countTreks(): Observable<any> {
-      return this.http.get<any>(`${this.apiServerUrl}/camping/count`);
+      return this.http.get<any>(`${this.apiServerUrl}/trek/count`);
     }
   
     // public deleteBuyerUser(Buyerid: number): Observable<void> {
@@ -65,7 +65,7 @@ export class DestinationsService {
       }
 
       public countCampings(): Observable<any> {
-        return this.http.get<any>(`${this.apiServerUrl}/trek/count`);
+        return this.http.get<any>(`${this.apiServerUrl}/camping/count`);
       }
 
 
