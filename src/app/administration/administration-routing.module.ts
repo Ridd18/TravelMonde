@@ -8,6 +8,7 @@ import { AdminDestinationsTreksComponent } from './admin-destinations-treks/admi
 import { AdminDestinationsCampingComponent } from './admin-destinations-camping/admin-destinations-camping.component';
 import { AdminDestinationsNationalComponent } from './admin-destinations-national/admin-destinations-national.component';
 import { AdminDestinationsInternationalComponent } from './admin-destinations-international/admin-destinations-international.component';
+import { TrekFilesComponent } from './trek-files/trek-files.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'collections/addTreks',
     component: AdminDestinationsTreksComponent,
+  },
+  {
+    path: 'collections/addTreks/files',
+    component: TrekFilesComponent,
   },
   {
     path: 'collections/addCamping',

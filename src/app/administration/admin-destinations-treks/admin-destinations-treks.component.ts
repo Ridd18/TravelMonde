@@ -37,7 +37,7 @@ export class AdminDestinationsTreksComponent implements OnInit {
       
         console.log(res);
         // localStorage.setItem('token', res.token)
-        this.router.navigate(['/administration/collections']);
+        this.router.navigate(['/administration/collections/addTreks/files']);
 
       },
       err => {
