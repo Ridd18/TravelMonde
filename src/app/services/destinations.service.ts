@@ -5,6 +5,7 @@ import { Trek } from '../models/trekModel';
 import { Camping } from '../models/campingModel';
 import { NationalTour } from '../models/nationalTourModel';
 import { InternationalTour } from '../models/internationalTourModel';
+import { trekFiles } from '../models/trekFileModel';
 
 @Injectable({
   providedIn: 'root'
@@ -134,8 +135,21 @@ export class DestinationsService {
       return this.http.request(req);
     }
   
-    getFiles(): Observable<any> {
-      return this.http.get(`${this.apiServerUrl}/files`);
+
+    //download 
+
+    public downloadTrekFile(name: string): Observable<trekFiles> {
+      return this.http.get<trekFiles>(
+        `${this.apiServerUrl}/trek/files/${name}`
+      );
+    }
+    
+    getTrekFiles(): Observable<any> {
+      return this.http.get<any>(`${this.apiServerUrl}/filesTrek`);
+    }
+
+    getAllTrekFiles(): Observable<trekFiles[]> {
+      return this.http.get<trekFiles[]>(`${this.apiServerUrl}/filesTrek`);
     }
 
 }

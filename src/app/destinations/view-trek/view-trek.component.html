@@ -61,3 +61,29 @@
     </div>
   </div>
 </div>
+
+  <div class="products">
+    <table class="table is-striped is-bordered mt-2 is-fullwidth">
+      <thead>
+        <tr>
+          <th>File Name</th>
+          <th class="has-text-centered">Download</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items2" >
+          <td>{{ item.name }}</td>
+          <td>
+            <a
+             
+              href="`http://localhost:3000/trek/files/${item.name}`"
+            >
+              <button class="btn">
+                <i class="fa fa-download"></i> Download
+              </button>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
