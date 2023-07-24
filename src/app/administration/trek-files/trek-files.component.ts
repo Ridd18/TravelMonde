@@ -1,6 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs';
+import { Trek } from 'src/app/models/trekModel';
 import { DestinationsService } from 'src/app/services/destinations.service';
 
 @Component({
@@ -9,40 +11,54 @@ import { DestinationsService } from 'src/app/services/destinations.service';
   styleUrls: ['./trek-files.component.css'],
 })
 export class TrekFilesComponent implements OnInit {
-  // selectedFiles?: FileList;
-  // currentFile?: File;
-  // progress = 0;
-  // message = '';
 
-  // file:File;
   message = '';
   fileName: string;
   $refs: any;
 
-  // fileInfos?: Observable<any>;
+  trekName: string;
 
-  // fileName: String;
+ 
+  public treks: Trek[];
+
+  public trek$:any
+
+  selectedId: number;
+
+
+
 
   uploadedFiles: Array<File>;
 
   constructor(
+    private service: DestinationsService,
     private http: HttpClient,
-    private uploadService: DestinationsService
+    private route:ActivatedRoute,
+    private router: Router
+    
   ) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.getTreks(); 
+
+    this.trek$ = this.route.paramMap.pipe(
+      switchMap((params) => {
+        this.selectedId = Number(params.get('id'));
+        console.log(this.selectedId);
+        return this.service.getTreks();
+      })
+    );
+  }
 
   onselectFile(event: any): void {
     this.uploadedFiles = event.target.files;
     
   }
 
-  // onSelect() {
-  //   const file = this.$refs.file.files[0]; // accessing file
-  //   this.file = file;
-  //   this.fileName = file.name;
-  // }
 
   async onSubmit() {
+
+    
     const formData = new FormData();
     for (var i = 0; i < this.uploadedFiles.length; i++) {
       this.fileName = this.uploadedFiles[i].name;
@@ -58,42 +74,19 @@ export class TrekFilesComponent implements OnInit {
       .subscribe((response) => {
         console.log('response received is ', response);
       });
+
+      this.router.navigate(['/administration/collections']);
   }
-  //   try {
-  //     await this.http.post("http://localhost:5000/upload", formData);
-  //     console.log(this.fileName);
-  //     this.message = "file uploaded successfully";
-  //     // this.file = "";
-  //     // this.$router.push("/admin/products");
-  //   } catch (error) {
-  //     console.log(error);
-  //     this.message = "something went wrong";
-  //   }
-  // }
-  // selectFile(event: any): void {
-  //   this.selectedFiles = event.target.files;
-  // }
 
-  // fileChange(element: any) {
-  //   this.uploadedFiles = element.target.files;
-  // }
-
-  // upload() {
-  //   let formData = new FormData();
-  //   for (var i = 0; i < this.uploadedFiles.length; i++) {
-
-  //     this.fileName = this.uploadedFiles[i].name;
-  //     console.log(this.fileName)
-  //     formData.append(
-  //       'uploads[]',
-  //       this.uploadedFiles[i],
-  //       this.uploadedFiles[i].name
-  //     );
-  //   }
-  //   this.http
-  //     .post('http://localhost:3000/trek/upload', formData)
-  //     .subscribe((response) => {
-  //       console.log('response received is ', response);
-  //     });
-  // }
+  public getTreks(): void {
+    this.service.getTreks().subscribe(
+      (response: Trek[]) => {
+        this.treks = response;
+        console.log(this.treks)
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
 }
