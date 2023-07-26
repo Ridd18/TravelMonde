@@ -1,4 +1,4 @@
-import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Trek } from '../models/trekModel';
@@ -143,6 +143,11 @@ export class DestinationsService {
         `${this.apiServerUrl}/trek/files/${name}`
       );
     }
+
+    
+    // public downloadFile(): Observable<HttpResponse<Blob>> {
+    //   return this.http.get( `${this.apiServerUrl}/trek/files/${name}`,{responseType: ResponseContentType.Blob } );
+    // }
     
     getTrekFiles(): Observable<any> {
       return this.http.get<any>(`${this.apiServerUrl}/filesTrek`);

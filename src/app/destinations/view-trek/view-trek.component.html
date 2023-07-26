@@ -1,4 +1,3 @@
-
 <!-- <app-navigation></app-navigation> -->
 
 <input
@@ -9,7 +8,6 @@
   id="id"
   placeholder="ID"
 />
-
 
 <!DOCTYPE html>
 
@@ -25,9 +23,7 @@
     <!-- card left -->
     <div class="product-imgs">
       <div class="img-display">
-        <img
-          [src]=""
-        />
+        <img [src]="" />
       </div>
     </div>
     <!-- card right -->
@@ -48,42 +44,37 @@
             Trek Total Days: &nbsp; {{ trek?.days }}
           </p></b
         >
-
       </div>
       <div class="purchase-info">
-        <button type="button" class="btn" >
+        <button type="button" class="btn">
           Book your Trek &nbsp; <i class="fas fa fa-plus"></i>
         </button>
         <button type="button" class="btn" (click)="goBackToTreks()">
-          Back to Treks &nbsp; <i class="fas fa fa-undo" ></i>
+          Back to Treks &nbsp; <i class="fas fa fa-undo"></i>
         </button>
       </div>
     </div>
   </div>
 </div>
 
-  <div class="products">
-    <table class="table is-striped is-bordered mt-2 is-fullwidth">
-      <thead>
-        <tr>
-          <th>File Name</th>
-          <th class="has-text-centered">Download</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of items2" >
-          <td>{{ item.name }}</td>
-          <td>
-            <a
-             
-              href="`http://localhost:3000/trek/files/${item.name}`"
-            >
-              <button class="btn">
+<div class="products">
+  <table class="table is-striped is-bordered mt-2 is-fullwidth">
+    <thead>
+      <tr>
+        <th>File Name</th>
+        <th class="has-text-centered">Download</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items2">
+        <td>{{ item.name }}</td>
+        <td>
+          <a (click)="downloadFile(item.name)">downloadd</a>
+          <!-- <button class="btn" (click)="onClick(item.name)">
                 <i class="fa fa-download"></i> Download
-              </button>
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+              </button> -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
