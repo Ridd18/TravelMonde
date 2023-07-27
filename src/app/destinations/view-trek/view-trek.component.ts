@@ -32,11 +32,7 @@ export class ViewTrekComponent {
 
   fileName: string;
 
-  downloadedFile: any;
-
-  filePath: string;
-
-  TrekName: string
+  TrekName: string;
 
   constructor(
     private router: Router,
@@ -101,18 +97,15 @@ export class ViewTrekComponent {
 
         this.TrekName = JSON.stringify(this.items2[3].name);
 
-
         console.log(this.TrekName);
-     
 
         this.getFileByFileName(this.TrekName);
-
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
     );
-      // 
+    //
   }
 
   // downloadFile(fileName: string) {
@@ -132,9 +125,8 @@ export class ViewTrekComponent {
   // }
 
   downloadFile(fileName: string) {
-
-    const trekkName = fileName +".pdf"
-    console.log(trekkName) 
+    const trekkName = fileName + '.pdf';
+    console.log(trekkName);
     this.http
       .get(`${this.apiServerUrl}/trek/files/${trekkName}`, {
         responseType: 'arraybuffer',
@@ -155,8 +147,6 @@ export class ViewTrekComponent {
       (data) => {
         console.log(data);
         this.trekByFileName = data;
-
-        
       },
       (error) => {
         console.log(error);

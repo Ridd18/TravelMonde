@@ -12,6 +12,8 @@ import { NationalTour } from '../models/nationalTourModel';
 import { InternationalTour } from '../models/internationalTourModel';
 import { trekFiles } from '../models/trekFileModel';
 import { trekFile } from '../models/trekFilesModel';
+import { campFiles } from '../models/campFileModel';
+import { campFile } from '../models/campFilesModel';
 
 @Injectable({
   providedIn: 'root',
@@ -38,26 +40,6 @@ export class DestinationsService {
     return this.http.get<any>(`${this.apiServerUrl}/trek/count`);
   }
 
-  //trek file upload
-
-  upload(file: File): Observable<HttpEvent<any>> {
-    const formData: FormData = new FormData();
-
-    formData.append('file', file);
-
-    const req = new HttpRequest(
-      'POST',
-      `${this.apiServerUrl}/trek/fileUpload`,
-      formData,
-      {
-        reportProgress: true,
-        responseType: 'json',
-      }
-    );
-
-    return this.http.request(req);
-  }
-
   //download trek file
 
   public downloadTrekFile(name: string): Observable<trekFiles> {
@@ -70,20 +52,19 @@ export class DestinationsService {
   }
 
   //get all trek files
-  getAllTrekFiles(): Observable<trekFiles[]> {
-    return this.http.get<trekFiles[]>(`${this.apiServerUrl}/filesTrek`);
-  }
+  // getAllTrekFiles(): Observable<trekFiles[]> {
+  //   return this.http.get<trekFiles[]>(`${this.apiServerUrl}/filesTrek`);
+  // }
 
- //get trek file by file name
- public getTrekFileByFilename(name: string): Observable<trekFile> {
-  return this.http.get<trekFile>(`${this.apiServerUrl}/trek/file/${name}`);
- }
+  //get trek file by file name
+  public getTrekFileByFilename(name: string): Observable<trekFile> {
+    return this.http.get<trekFile>(`${this.apiServerUrl}/trek/file/${name}`);
+  }
 
   // //get trek file by file name
   // public getTrekFileByFilename(name: string): Observable<trekFile[]> {
   //   return this.http.get<trekFile[]>(`${this.apiServerUrl}/trek/file/${name}`);
   //  }
-  
 
   //Campings
   public getCampings(): Observable<Camping[]> {
@@ -101,6 +82,27 @@ export class DestinationsService {
   public countCampings(): Observable<any> {
     return this.http.get<any>(`${this.apiServerUrl}/camping/count`);
   }
+
+  //download camp file
+
+  public downloadCampFile(name: string): Observable<campFiles> {
+    return this.http.get<campFiles>(`${this.apiServerUrl}/camp/files/${name}`);
+  }
+
+  //get all camp files
+  getCampFiles(): Observable<any> {
+    return this.http.get<any>(`${this.apiServerUrl}/filesCamping`);
+  }
+
+  //get trek file by file name
+  public getCampFileByFilename(name: string): Observable<campFile> {
+    return this.http.get<campFile>(`${this.apiServerUrl}/camp/file/${name}`);
+  }
+
+  // //get trek file by file name
+  // public getTrekFileByFilename(name: string): Observable<trekFile[]> {
+  //   return this.http.get<trekFile[]>(`${this.apiServerUrl}/trek/file/${name}`);
+  //  }
 
   //National Tours
 

@@ -1,15 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Camping } from 'src/app/models/campingModel';
 
 @Component({
-  selector: 'app-trek-files',
-  templateUrl: './trek-files.component.html',
-  styleUrls: ['./trek-files.component.css'],
+  selector: 'app-camp-files',
+  templateUrl: './camp-files.component.html',
+  styleUrls: ['./camp-files.component.css'],
 })
-export class TrekFilesComponent implements OnInit {
+export class CampFilesComponent implements OnInit {
   message = '';
+  
   fileName: string;
+  
 
   uploadedFiles: Array<File>;
 
@@ -32,7 +35,7 @@ export class TrekFilesComponent implements OnInit {
       );
     }
     this.http
-      .post('http://localhost:3000/trek/upload', formData)
+      .post('http://localhost:3000/camping/upload', formData)
       .subscribe((response) => {
         console.log('response received is ', response);
       });

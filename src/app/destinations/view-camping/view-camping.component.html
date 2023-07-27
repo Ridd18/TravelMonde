@@ -1,6 +1,4 @@
 
-<!-- <app-navigation></app-navigation> -->
-
 <input
   type="hidden"
   name="id"
@@ -48,7 +46,13 @@
             Camping Total Days: &nbsp; {{ camping?.days }}
           </p></b
         >
-
+        <b
+        ><p class="product-file-name">
+          {{ camping?.name }}: &nbsp; 
+         
+          <a (click)="downloadFile(camping.name)">download</a>
+        </p></b
+      >
       </div>
       <div class="purchase-info">
         <button type="button" class="btn" >

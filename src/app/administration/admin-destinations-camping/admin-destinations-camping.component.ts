@@ -32,7 +32,7 @@ export class AdminDestinationsCampingComponent {
       
         console.log(res);
         // localStorage.setItem('token', res.token)
-        this.router.navigate(['/administration/collections']);
+        this.router.navigate(['/administration/collections/addCamping/files']);
 
       },
       err => {
