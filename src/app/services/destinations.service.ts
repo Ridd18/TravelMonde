@@ -14,6 +14,8 @@ import { trekFiles } from '../models/trekFileModel';
 import { trekFile } from '../models/trekFilesModel';
 import { campFiles } from '../models/campFileModel';
 import { campFile } from '../models/campFilesModel';
+import { internationalFiles } from '../models/InternationalFileModel';
+import { internationalFile } from '../models/InternationalFilesModel';
 
 @Injectable({
   providedIn: 'root',
@@ -152,5 +154,36 @@ export class DestinationsService {
 
   public countInternationalTours(): Observable<any> {
     return this.http.get<any>(`${this.apiServerUrl}/internationalTour/count`);
+  }
+
+  //download international file
+
+  public downloadInternationalFile(
+    name: string
+  ): Observable<internationalFiles> {
+    return this.http.get<internationalFiles>(
+      `${this.apiServerUrl}/internationalTour/files/${name}`
+    );
+  }
+
+  //get all internationalTour files
+  getinternationalFiles(): Observable<any> {
+    return this.http.get<any>(`${this.apiServerUrl}/filesinternationalTour`);
+  }
+
+  //get internationalTour file by file name
+  public getinternationalFileByFilename(
+    name: string
+  ): Observable<internationalFile> {
+    return this.http.get<internationalFile>(
+      `${this.apiServerUrl}/internationalTour/file/${name}`
+    );
+  }
+
+  //get internationalTour file by id
+  public getinternationalFileById(id: number): Observable<internationalFile> {
+    return this.http.get<internationalFile>(
+      `${this.apiServerUrl}/internationalTour/fileById/${id}`
+    );
   }
 }

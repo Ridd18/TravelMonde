@@ -10,6 +10,7 @@ import { AdminDestinationsNationalComponent } from './admin-destinations-nationa
 import { AdminDestinationsInternationalComponent } from './admin-destinations-international/admin-destinations-international.component';
 import { TrekFilesComponent } from './trek-files/trek-files.component';
 import { CampFilesComponent } from './camp-files/camp-files.component';
+import { InternationalFilesComponent } from './international-files/international-files.component';
 
 const routes: Routes = [
   {
@@ -44,9 +45,14 @@ const routes: Routes = [
     path: 'collections/addNational',
     component: AdminDestinationsNationalComponent,
   },
+
   {
     path: 'collections/addInternational',
     component: AdminDestinationsInternationalComponent,
+  },
+  {
+    path: 'collections/addInternational/files',
+    component: InternationalFilesComponent,
   },
   {
     path: 'users/edit/:id',

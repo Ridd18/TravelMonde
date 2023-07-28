@@ -23,7 +23,8 @@ export class AdminDestinationsInternationalComponent {
       (res) => {
         console.log(res);
         // localStorage.setItem('token', res.token)
-        this.router.navigate(['/administration/collections']);
+        this.router.navigate(['/administration/collections/addInternational/files']);
+
       },
       (err) => {
         console.log(err);

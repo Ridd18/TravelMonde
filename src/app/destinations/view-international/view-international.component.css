@@ -226,3 +226,26 @@ img {
   color: #000;
   font-weight: bold;
 }
+
+
+.products {
+  display: flex;
+  margin-top: 100px;
+}
+
+a {
+  color: turquoise;
+  text-decoration: blink;
+  margin-right: 10px;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+  margin: 5px;
+  font-family: "FontAwesome";
+  font-size: inherit;
+  line-height: inherit;
+}

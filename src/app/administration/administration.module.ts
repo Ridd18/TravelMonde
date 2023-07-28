@@ -16,6 +16,7 @@ import { AdminDestinationsNationalComponent } from './admin-destinations-nationa
 import { AdminDestinationsInternationalComponent } from './admin-destinations-international/admin-destinations-international.component';
 import { TrekFilesComponent } from './trek-files/trek-files.component';
 import { CampFilesComponent } from './camp-files/camp-files.component';
+import { InternationalFilesComponent } from './international-files/international-files.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CampFilesComponent } from './camp-files/camp-files.component';
     AdminDestinationsInternationalComponent,
     TrekFilesComponent,
     CampFilesComponent,
+    InternationalFilesComponent,
   ],
   imports: [
     CommonModule,
