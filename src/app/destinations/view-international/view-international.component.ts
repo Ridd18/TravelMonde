@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import * as saveAs from 'file-saver';
+import { saveAs } from 'file-saver';
 import { internationalFiles } from 'src/app/models/InternationalFileModel';
 import { internationalFile } from 'src/app/models/InternationalFilesModel';
 import { InternationalTour } from 'src/app/models/internationalTourModel';
@@ -24,6 +24,8 @@ export class ViewInternationalComponent {
 
   id: number;
 
+  idForFile:number;
+
   private apiServerUrl = 'http://localhost:3000';
 
   items: [];
@@ -39,7 +41,7 @@ export class ViewInternationalComponent {
     private router: Router,
     private service: DestinationsService,
     private route: ActivatedRoute,
-    
+
     private http: HttpClient
   ) {}
 
@@ -48,11 +50,13 @@ export class ViewInternationalComponent {
 
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
+      this.idForFile = +params['id'];
       console.log(this.id);
+      console.log(this.idForFile);
     });
     this.getInterNationalTour(this.id);
 
-    this.getInterNationalTourFile(this.id);
+    this.getInterNationalTourFile(this.idForFile);
   }
 
   public getInterNationalTour(id: number) {
@@ -60,6 +64,18 @@ export class ViewInternationalComponent {
       (data) => {
         console.log(data);
         this.internationalTour = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  public getInterNationalTourFile(id: number) {
+    this.service.getinternationalFileById(this.idForFile).subscribe(
+      (data) => {
+        console.log(data);
+        this.internationalTourFile = data;
       },
       (error) => {
         console.log(error);
@@ -87,13 +103,11 @@ export class ViewInternationalComponent {
     this.router.navigate(['/destinations/international']);
   }
 
-
   public getAllInterNationalToursFiles(): void {
     this.service.getinternationalFiles().subscribe(
       (response: internationalFiles[]) => {
         this.items2 = response;
         console.log(this.items2);
-      
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -102,13 +116,28 @@ export class ViewInternationalComponent {
     //
   }
 
-
+  // downloadFile(fileName: string) {
+  //   const internationalTourName = fileName + '.pdf';
+  //   console.log(internationalTourName);
+  //   this.http
+  //     .get(
+  //       `${this.apiServerUrl}/internationalTour/files/${internationalTourName}`,
+  //       {
+  //         responseType: 'arraybuffer',
+  //       }
+  //     )
+  //     .subscribe((data) => {
+  //       const blob = new Blob([data], {
+  //         type: 'application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document , image/jpeg ,image/png  ',
+  //       });
+  //       const fileeName = fileName;
+  //       saveAs(blob, internationalTourName);
+  //     });
+  // }
 
   downloadFile(fileName: string) {
-    const internationalTourName = fileName + '.pdf';
-    console.log(internationalTourName);
     this.http
-      .get(`${this.apiServerUrl}/internationalTour/files/${internationalTourName}`, {
+      .get(`${this.apiServerUrl}/internationalTour/files/${fileName}`, {
         responseType: 'arraybuffer',
       })
       .subscribe((data) => {
@@ -116,23 +145,11 @@ export class ViewInternationalComponent {
           type: 'application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document , image/jpeg ,image/png  ',
         });
         const fileeName = fileName;
-        saveAs(blob, internationalTourName);
+        saveAs(blob, fileName);
       });
 
-    
+   
   }
 
-  
-  public getInterNationalTourFile(id: number) {
-    this.service.getinternationalFileById(this.id).subscribe(
-      (data) => {
-        console.log(data);
-        this.internationalTour = data;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
 
 }
