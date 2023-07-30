@@ -1,4 +1,3 @@
-
 <!-- <app-navigation></app-navigation> -->
 
 <input
@@ -10,6 +9,14 @@
   placeholder="ID"
 />
 
+<input
+  type="hidden"
+  name="id"
+  ngModel="{{ nationalFile?.id }}"
+  class="form-control"
+  id="id"
+  placeholder="ID"
+/>
 
 <!DOCTYPE html>
 
@@ -25,9 +32,7 @@
     <!-- card left -->
     <div class="product-imgs">
       <div class="img-display">
-        <img
-          [src]=""
-        />
+        <img [src]="" />
       </div>
     </div>
     <!-- card right -->
@@ -49,18 +54,24 @@
           </p></b
         >
         <b
-        ><p class="product-description">
+          ><p class="product-description">
             Tour Nights: &nbsp; {{ nationalTour?.nights }}
-        </p></b
-      >
+          </p></b
+        >
+        <b
+          ><p class="product-file-name">
+            {{ nationalTour?.name }}: &nbsp;
 
+            <a (click)="downloadFile(nationalFile.file_name)">download</a>
+          </p></b
+        >
       </div>
       <div class="purchase-info">
-        <button type="button" class="btn" >
+        <button type="button" class="btn">
           Book your Tour &nbsp; <i class="fas fa fa-plus"></i>
         </button>
         <button type="button" class="btn" (click)="goBackToNationalTours()">
-          Back to all Tours &nbsp; <i class="fas fa fa-undo" ></i>
+          Back to all Tours &nbsp; <i class="fas fa fa-undo"></i>
         </button>
       </div>
     </div>

@@ -1,6 +1,9 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router,ActivatedRoute, Params } from '@angular/router';
+import * as saveAs from 'file-saver';
+import { nationalFiles } from 'src/app/models/nationalFileModel';
+import { nationalFile } from 'src/app/models/nationalFilesModel';
 import { NationalTour } from 'src/app/models/nationalTourModel';
 import { DestinationsService } from 'src/app/services/destinations.service';
 
@@ -15,16 +18,30 @@ export class ViewNationalComponent {
 
   selectedId: number;
 
-  // public trek: Trek[];
+  private apiServerUrl = 'http://localhost:3000';
 
   nationalTour: any;
 
   id: number;
 
+  nationalFile: any;
+
+  idForFile: number;
+
+  items: [];
+  items2: nationalFiles[];
+
+  nationalByFileName: nationalFile;
+
+  fileName: string;
+
+  NationalName: string;
+
   constructor(
     private router: Router,
     private service: DestinationsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -32,10 +49,13 @@ export class ViewNationalComponent {
 
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
+      this.idForFile = +params['id'];
       console.log(this.id);
+      console.log(this.idForFile);
     });
     this.getNationalTour(this.id);
   
+    this.getNationalFile(this.idForFile);
     
   }
 
@@ -74,5 +94,44 @@ export class ViewNationalComponent {
     this.router.navigate(['/destinations/national']);
   }
 
+
+  public getAllNationalFiles(): void {
+    this.service.getNationalFiles().subscribe(
+      (response: nationalFiles[]) => {
+        this.items2 = response;
+        console.log(this.items2);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+    //
+  }
+
+  downloadFile(fileName: string) {
+    this.http
+      .get(`${this.apiServerUrl}/nationalTour/files/${fileName}`, {
+        responseType: 'arraybuffer',
+      })
+      .subscribe((data) => {
+        const blob = new Blob([data], {
+          type: 'application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document , image/jpeg ,image/png  ',
+        });
+        const fileeName = fileName;
+        saveAs(blob, fileName);
+      });
+  }
+
+  public getNationalFile(id: number) {
+    this.service.getNationalFileById(this.idForFile).subscribe(
+      (data) => {
+        console.log(data);
+        this.nationalFile = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 
 }

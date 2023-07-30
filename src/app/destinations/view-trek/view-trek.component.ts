@@ -17,13 +17,15 @@ export class ViewTrekComponent {
 
   selectedId: number;
 
-  // public trek: Trek[];
-
   private apiServerUrl = 'http://localhost:3000';
 
   trek: any;
 
   id: number;
+
+  trekFile: any;
+
+  idForFile: number;
 
   items: [];
   items2: trekFiles[];
@@ -44,15 +46,15 @@ export class ViewTrekComponent {
   ngOnInit(): void {
     this.getTreks();
 
-    this.getAllTrekFiles();
-
-    this.getFileByFileName(this.TrekName);
-
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
+      this.idForFile = +params['id'];
       console.log(this.id);
+      console.log(this.idForFile);
     });
     this.getTrek(this.id);
+
+    this.getTrekFile(this.idForFile);
   }
 
   public getTrek(id: number) {
@@ -62,8 +64,6 @@ export class ViewTrekComponent {
         this.trek = data;
       },
       (error) => {
-        // this.getMaxBid(id);
-
         console.log(error);
       }
     );
@@ -94,12 +94,6 @@ export class ViewTrekComponent {
       (response: trekFiles[]) => {
         this.items2 = response;
         console.log(this.items2);
-
-        this.TrekName = JSON.stringify(this.items2[3].name);
-
-        console.log(this.TrekName);
-
-        this.getFileByFileName(this.TrekName);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -108,27 +102,9 @@ export class ViewTrekComponent {
     //
   }
 
-  // downloadFile(fileName: string) {
-  //   this.http
-  //     .get(`${this.apiServerUrl}/trek/files/${fileName}`, {
-  //       responseType: 'arraybuffer',
-  //     })
-  //     .subscribe((data) => {
-  //       const blob = new Blob([data], {
-  //         type: 'application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document , image/jpeg ,image/png  ',
-  //       });
-  //       const fileeName = fileName;
-  //       saveAs(blob, fileName);
-  //     });
-
-  //   this.getFileByFileName(fileName);
-  // }
-
   downloadFile(fileName: string) {
-    const trekkName = fileName + '.pdf';
-    console.log(trekkName);
     this.http
-      .get(`${this.apiServerUrl}/trek/files/${trekkName}`, {
+      .get(`${this.apiServerUrl}/trek/files/${fileName}`, {
         responseType: 'arraybuffer',
       })
       .subscribe((data) => {
@@ -136,17 +112,15 @@ export class ViewTrekComponent {
           type: 'application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document , image/jpeg ,image/png  ',
         });
         const fileeName = fileName;
-        saveAs(blob, trekkName);
+        saveAs(blob, fileName);
       });
-
-    this.getFileByFileName(fileName);
   }
 
-  public getFileByFileName(name: string) {
-    this.service.getTrekFileByFilename(name).subscribe(
+  public getTrekFile(id: number) {
+    this.service.getTrekFileById(this.idForFile).subscribe(
       (data) => {
         console.log(data);
-        this.trekByFileName = data;
+        this.trekFile = data;
       },
       (error) => {
         console.log(error);

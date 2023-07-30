@@ -8,6 +8,15 @@
   placeholder="ID"
 />
 
+<input
+  type="hidden"
+  name="id"
+  ngModel="{{ trekFile?.id }}"
+  class="form-control"
+  id="id"
+  placeholder="ID"
+/>
+
 <!-- <input
   type="hidden"
   name="name"
@@ -56,7 +65,7 @@
         ><p class="product-file-name">
           {{ trek?.name }}: &nbsp; 
          
-          <a (click)="downloadFile(trek.name)">download</a>
+          <a (click)="downloadFile(trekFile.file_name)">download</a>
         </p></b
       >
       </div>

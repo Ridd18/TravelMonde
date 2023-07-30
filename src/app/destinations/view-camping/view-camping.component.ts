@@ -24,6 +24,10 @@ export class ViewCampingComponent {
 
   id: number;
 
+  campFile: any;
+
+  idForFile: number;
+
   private apiServerUrl = 'http://localhost:3000';
 
   items: [];
@@ -48,14 +52,16 @@ export class ViewCampingComponent {
   ngOnInit(): void {
     this.getCampings();
 
-    this.getAllCampFiles()
-
+   
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
+      this.idForFile = +params['id'];
       console.log(this.id);
+      console.log(this.idForFile);
     });
     this.getCamping(this.id);
   
+    this.getCampFile(this.idForFile)
     
   }
 
@@ -110,12 +116,9 @@ export class ViewCampingComponent {
   }
 
 
-
   downloadFile(fileName: string) {
-    const campName = fileName + '.pdf';
-    console.log(campName);
     this.http
-      .get(`${this.apiServerUrl}/camping/files/${campName}`, {
+      .get(`${this.apiServerUrl}/camping/files/${fileName}`, {
         responseType: 'arraybuffer',
       })
       .subscribe((data) => {
@@ -123,9 +126,19 @@ export class ViewCampingComponent {
           type: 'application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document , image/jpeg ,image/png  ',
         });
         const fileeName = fileName;
-        saveAs(blob, campName);
+        saveAs(blob, fileName);
       });
+  }
 
-    
+  public getCampFile(id: number) {
+    this.service.getCampFileById(this.idForFile).subscribe(
+      (data) => {
+        console.log(data);
+        this.campFile = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

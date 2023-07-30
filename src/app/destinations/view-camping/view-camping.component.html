@@ -8,6 +8,14 @@
   placeholder="ID"
 />
 
+<input
+  type="hidden"
+  name="id"
+  ngModel="{{ campFile?.id }}"
+  class="form-control"
+  id="id"
+  placeholder="ID"
+/>
 
 <!DOCTYPE html>
 
@@ -50,7 +58,7 @@
         ><p class="product-file-name">
           {{ camping?.name }}: &nbsp; 
          
-          <a (click)="downloadFile(camping.name)">download</a>
+          <a (click)="downloadFile(campFile.file_name)">download</a>
         </p></b
       >
       </div>

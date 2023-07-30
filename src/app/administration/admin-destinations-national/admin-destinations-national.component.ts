@@ -24,7 +24,7 @@ export class AdminDestinationsNationalComponent {
       (res) => {
         console.log(res);
         // localStorage.setItem('token', res.token)
-        this.router.navigate(['/administration/collections']);
+        this.router.navigate(['/administration/collections/addNational/files']);
       },
       (err) => {
         console.log(err);

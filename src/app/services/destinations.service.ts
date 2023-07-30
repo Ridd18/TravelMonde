@@ -16,6 +16,8 @@ import { campFiles } from '../models/campFileModel';
 import { campFile } from '../models/campFilesModel';
 import { internationalFiles } from '../models/InternationalFileModel';
 import { internationalFile } from '../models/InternationalFilesModel';
+import { nationalFiles } from '../models/nationalFileModel';
+import { nationalFile } from '../models/nationalFilesModel';
 
 @Injectable({
   providedIn: 'root',
@@ -63,10 +65,12 @@ export class DestinationsService {
     return this.http.get<trekFile>(`${this.apiServerUrl}/trek/file/${name}`);
   }
 
-  // //get trek file by file name
-  // public getTrekFileByFilename(name: string): Observable<trekFile[]> {
-  //   return this.http.get<trekFile[]>(`${this.apiServerUrl}/trek/file/${name}`);
-  //  }
+    //get trek file by id
+    public getTrekFileById(id: number): Observable<trekFile> {
+      return this.http.get<trekFile>(
+        `${this.apiServerUrl}/trek/fileById/${id}`
+      );
+    }
 
   //Campings
   public getCampings(): Observable<Camping[]> {
@@ -96,15 +100,17 @@ export class DestinationsService {
     return this.http.get<any>(`${this.apiServerUrl}/filesCamping`);
   }
 
-  //get trek file by file name
+  //get trek camp by file name
   public getCampFileByFilename(name: string): Observable<campFile> {
     return this.http.get<campFile>(`${this.apiServerUrl}/camp/file/${name}`);
   }
 
-  // //get trek file by file name
-  // public getTrekFileByFilename(name: string): Observable<trekFile[]> {
-  //   return this.http.get<trekFile[]>(`${this.apiServerUrl}/trek/file/${name}`);
-  //  }
+    //get camp file by id
+    public getCampFileById(id: number): Observable<campFile> {
+      return this.http.get<campFile>(
+        `${this.apiServerUrl}/camping/fileById/${id}`
+      );
+    }
 
   //National Tours
 
@@ -128,6 +134,38 @@ export class DestinationsService {
   public countNationalTours(): Observable<any> {
     return this.http.get<any>(`${this.apiServerUrl}/nationalTour/count`);
   }
+
+//download national file
+
+public downloadNationalFile(
+  name: string
+): Observable<nationalFiles> {
+  return this.http.get<nationalFiles>(
+    `${this.apiServerUrl}/nationalTour/files/${name}`
+  );
+}
+
+//get all nationalTour files
+getNationalFiles(): Observable<any> {
+  return this.http.get<any>(`${this.apiServerUrl}/filesnationalTour`);
+}
+
+//get nationalTour file by file name
+public getNationalFileByFilename(
+  name: string
+): Observable<nationalFile> {
+  return this.http.get<nationalFile>(
+    `${this.apiServerUrl}/nationalTour/file/${name}`
+  );
+}
+
+//get nationalTour file by id
+public getNationalFileById(id: number): Observable<nationalFile> {
+  return this.http.get<nationalFile>(
+    `${this.apiServerUrl}/nationalTour/fileById/${id}`
+  );
+}
+
 
   //InterNational Tours
 
