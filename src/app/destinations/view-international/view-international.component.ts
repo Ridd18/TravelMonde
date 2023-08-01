@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { saveAs } from 'file-saver';
 import { internationalFiles } from 'src/app/models/InternationalFileModel';
@@ -13,9 +14,21 @@ import { DestinationsService } from 'src/app/services/destinations.service';
   styleUrls: ['./view-international.component.css'],
 })
 export class ViewInternationalComponent {
+
+  //ratiing
+  @Input() itemID!: number;
+  @Input() averageRating!: number;
+
+  selectedRating: number |null = null;
+
+  //end rating
+
   public internationalTours: InternationalTour[];
 
   selectedId: number;
+
+  idForRating: number;
+
 
   // public trek: Trek[];
 
@@ -24,7 +37,7 @@ export class ViewInternationalComponent {
 
   id: number;
 
-  idForFile:number;
+  idForFile: number;
 
   private apiServerUrl = 'http://localhost:3000';
 
@@ -37,11 +50,16 @@ export class ViewInternationalComponent {
 
   internationalTourName: string;
 
+  max = 5;
+  rate = 2;
+  isReadonly = false;
+
+  form: FormGroup;
+
   constructor(
     private router: Router,
     private service: DestinationsService,
     private route: ActivatedRoute,
-
     private http: HttpClient
   ) {}
 
@@ -51,7 +69,9 @@ export class ViewInternationalComponent {
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       this.idForFile = +params['id'];
+      this.idForRating = +params['id'];
       console.log(this.id);
+      console.log(this.idForRating);
       console.log(this.idForFile);
     });
     this.getInterNationalTour(this.id);
@@ -116,25 +136,6 @@ export class ViewInternationalComponent {
     //
   }
 
-  // downloadFile(fileName: string) {
-  //   const internationalTourName = fileName + '.pdf';
-  //   console.log(internationalTourName);
-  //   this.http
-  //     .get(
-  //       `${this.apiServerUrl}/internationalTour/files/${internationalTourName}`,
-  //       {
-  //         responseType: 'arraybuffer',
-  //       }
-  //     )
-  //     .subscribe((data) => {
-  //       const blob = new Blob([data], {
-  //         type: 'application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document , image/jpeg ,image/png  ',
-  //       });
-  //       const fileeName = fileName;
-  //       saveAs(blob, internationalTourName);
-  //     });
-  // }
-
   downloadFile(fileName: string) {
     this.http
       .get(`${this.apiServerUrl}/internationalTour/files/${fileName}`, {
@@ -147,9 +148,24 @@ export class ViewInternationalComponent {
         const fileeName = fileName;
         saveAs(blob, fileName);
       });
-
-   
   }
 
+  onStarClick(rating: number) {
+    this.selectedRating = rating;
+    const idInRating = this.idForRating
+    console.log("id for rating",idInRating)
+
+    this.service.submitRating(rating,this.idForRating ).subscribe(
+      (response) => {
+        console.log(response)
+        // Handle successful submission, e.g., show a success message
+        console.log('Rating submitted successfully');
+      },
+      (error) => {
+        // Handle error during submission, e.g., show an error message
+        console.error('Error submitting rating:', error);
+      }
+    );
+  }
 
 }

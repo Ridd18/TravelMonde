@@ -249,3 +249,8 @@ textarea {
   font-size: inherit;
   line-height: inherit;
 }
+
+ngb-rating {
+  color: #FFC107;
+  font-size: 80px;
+}

@@ -224,4 +224,17 @@ public getNationalFileById(id: number): Observable<nationalFile> {
       `${this.apiServerUrl}/internationalTour/fileById/${id}`
     );
   }
+
+
+  //ratingss
+  // submitRating(rating: number,id: number) {
+  //   return this.http.post(`${this.apiServerUrl}/internationalTour/addratings`, { rating ,id});
+  // }
+  submitRating(rating: number,id: number) {
+    return this.http.post(`${this.apiServerUrl}/internationalTour/addrating`, { rating ,id});
+  }
+
+  getAverageRating(itemID: number) {
+    return this.http.get(`${this.apiServerUrl}/internationalTour/ratings/${itemID}`);
+  }
 }
