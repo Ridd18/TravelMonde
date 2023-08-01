@@ -13,6 +13,13 @@ import { trekFile } from 'src/app/models/trekFilesModel';
   styleUrls: ['./view-trek.component.css'],
 })
 export class ViewTrekComponent {
+
+    //ratiing
+    idForRating: number;
+
+    selectedRating: number | null = null;
+  
+    //end rating
   public treks: Trek[];
 
   selectedId: number;
@@ -49,6 +56,7 @@ export class ViewTrekComponent {
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       this.idForFile = +params['id'];
+      this.idForRating = +params['id'];
       console.log(this.id);
       console.log(this.idForFile);
     });
@@ -124,6 +132,24 @@ export class ViewTrekComponent {
       },
       (error) => {
         console.log(error);
+      }
+    );
+  }
+
+  onStarClick(rating: number) {
+    this.selectedRating = rating;
+    const idInRating = this.idForRating;
+    console.log('id for rating', idInRating);
+
+    this.service.submitTrekRating(rating, this.idForRating).subscribe(
+      (response) => {
+        console.log(response);
+        // Handle successful submission, e.g., show a success message
+        console.log('Rating submitted successfully');
+      },
+      (error) => {
+        // Handle error during submission, e.g., show an error message
+        console.error('Error submitting rating:', error);
       }
     );
   }

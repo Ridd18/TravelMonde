@@ -17,14 +17,7 @@
   placeholder="ID"
 />
 
-<!-- <input
-  type="hidden"
-  name="name"
-  ngModel="{{ trekByFileName?.file_name }}"
-  class="form-control"
-  id="name"
-  placeholder="NAME"
-/> -->
+
 
 <!DOCTYPE html>
 
@@ -68,6 +61,21 @@
           <a (click)="downloadFile(trekFile.file_name)">download</a>
         </p></b
       >
+      <div class="rating">
+        <div class="star-rating">
+          <span
+            *ngFor="let i of [1, 2, 3, 4, 5]"
+            class="star"
+            (click)="onStarClick(i)"
+          >
+            <span
+              [class.filled]="selectedRating !== null && selectedRating >= i"
+              >&#9733;</span
+            >
+            <!-- <span [class.empty]="selectedRating === null || selectedRating < i">&#9734;</span> -->
+          </span>
+        </div>
+      </div>
       </div>
       <div class="purchase-info">
         <button type="button" class="btn">
@@ -80,27 +88,4 @@
     </div>
   </div>
 </div>
-
-<!-- <div class="products">
-  <table class="table is-striped is-bordered mt-2 is-fullwidth">
-    <thead>
-      <tr>
-        <th>File Name</th>
-        <th class="has-text-centered">Download</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of items2">
-        <td>{{ item.name }}</td>
-        <td>
-          <a (click)="downloadFile(item.name)">downloadd</a>
-          <button class="btn" (click)="onClick(item.name)">
-                <i class="fa fa-download"></i> Download
-              </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div> -->
-
 

@@ -18,6 +18,10 @@ import { internationalFiles } from '../models/InternationalFileModel';
 import { internationalFile } from '../models/InternationalFilesModel';
 import { nationalFiles } from '../models/nationalFileModel';
 import { nationalFile } from '../models/nationalFilesModel';
+import { internationalRating } from '../models/internationalRatingModel';
+import { trekRating } from '../models/trekRatingModel';
+import { campingRating } from '../models/campingRatingModel';
+import { nationalRating } from '../models/nationalRatingModel';
 
 @Injectable({
   providedIn: 'root',
@@ -55,22 +59,33 @@ export class DestinationsService {
     return this.http.get<any>(`${this.apiServerUrl}/filesTrek`);
   }
 
-  //get all trek files
-  // getAllTrekFiles(): Observable<trekFiles[]> {
-  //   return this.http.get<trekFiles[]>(`${this.apiServerUrl}/filesTrek`);
-  // }
-
   //get trek file by file name
   public getTrekFileByFilename(name: string): Observable<trekFile> {
     return this.http.get<trekFile>(`${this.apiServerUrl}/trek/file/${name}`);
   }
 
-    //get trek file by id
-    public getTrekFileById(id: number): Observable<trekFile> {
-      return this.http.get<trekFile>(
-        `${this.apiServerUrl}/trek/fileById/${id}`
-      );
-    }
+  //get trek file by id
+  public getTrekFileById(id: number): Observable<trekFile> {
+    return this.http.get<trekFile>(`${this.apiServerUrl}/trek/fileById/${id}`);
+  }
+
+  //add rating
+  submitTrekRating(rating: number, id: number) {
+    return this.http.post(`${this.apiServerUrl}/trek/addrating`, {
+      rating,
+      id,
+    });
+  }
+
+  //get avg rating
+  getTrekAverageRating(id: number) {
+    return this.http.get(`${this.apiServerUrl}/trek/ratings/${id}`);
+  }
+
+  //get all ratings
+  public getAllTrekRatings(): Observable<trekRating[]> {
+    return this.http.get<trekRating[]>(`${this.apiServerUrl}/trekRatings`);
+  }
 
   //Campings
   public getCampings(): Observable<Camping[]> {
@@ -105,12 +120,32 @@ export class DestinationsService {
     return this.http.get<campFile>(`${this.apiServerUrl}/camp/file/${name}`);
   }
 
-    //get camp file by id
-    public getCampFileById(id: number): Observable<campFile> {
-      return this.http.get<campFile>(
-        `${this.apiServerUrl}/camping/fileById/${id}`
-      );
-    }
+  //get camp file by id
+  public getCampFileById(id: number): Observable<campFile> {
+    return this.http.get<campFile>(
+      `${this.apiServerUrl}/camping/fileById/${id}`
+    );
+  }
+
+  //add rating
+  submitCampRating(rating: number, id: number) {
+    return this.http.post(`${this.apiServerUrl}/camping/addrating`, {
+      rating,
+      id,
+    });
+  }
+
+  //get avg rating
+  getCampAverageRating(id: number) {
+    return this.http.get(`${this.apiServerUrl}/camping/ratings/${id}`);
+  }
+
+  //get all ratings
+  public getAllCampRatings(): Observable<campingRating[]> {
+    return this.http.get<campingRating[]>(
+      `${this.apiServerUrl}/campingRatings`
+    );
+  }
 
   //National Tours
 
@@ -135,37 +170,52 @@ export class DestinationsService {
     return this.http.get<any>(`${this.apiServerUrl}/nationalTour/count`);
   }
 
-//download national file
+  //download national file
 
-public downloadNationalFile(
-  name: string
-): Observable<nationalFiles> {
-  return this.http.get<nationalFiles>(
-    `${this.apiServerUrl}/nationalTour/files/${name}`
-  );
-}
+  public downloadNationalFile(name: string): Observable<nationalFiles> {
+    return this.http.get<nationalFiles>(
+      `${this.apiServerUrl}/nationalTour/files/${name}`
+    );
+  }
 
-//get all nationalTour files
-getNationalFiles(): Observable<any> {
-  return this.http.get<any>(`${this.apiServerUrl}/filesnationalTour`);
-}
+  //get all nationalTour files
+  getNationalFiles(): Observable<any> {
+    return this.http.get<any>(`${this.apiServerUrl}/filesnationalTour`);
+  }
 
-//get nationalTour file by file name
-public getNationalFileByFilename(
-  name: string
-): Observable<nationalFile> {
-  return this.http.get<nationalFile>(
-    `${this.apiServerUrl}/nationalTour/file/${name}`
-  );
-}
+  //get nationalTour file by file name
+  public getNationalFileByFilename(name: string): Observable<nationalFile> {
+    return this.http.get<nationalFile>(
+      `${this.apiServerUrl}/nationalTour/file/${name}`
+    );
+  }
 
-//get nationalTour file by id
-public getNationalFileById(id: number): Observable<nationalFile> {
-  return this.http.get<nationalFile>(
-    `${this.apiServerUrl}/nationalTour/fileById/${id}`
-  );
-}
+  //get nationalTour file by id
+  public getNationalFileById(id: number): Observable<nationalFile> {
+    return this.http.get<nationalFile>(
+      `${this.apiServerUrl}/nationalTour/fileById/${id}`
+    );
+  }
 
+  //add rating
+  submitNationalRating(rating: number, id: number) {
+    return this.http.post(`${this.apiServerUrl}/nationalTour/addrating`, {
+      rating,
+      id,
+    });
+  }
+
+  //get avg rating
+  getNationalAverageRating(id: number) {
+    return this.http.get(`${this.apiServerUrl}/national/ratings/${id}`);
+  }
+
+  //get all ratings
+  public getAllNationalRatings(): Observable<nationalRating[]> {
+    return this.http.get<nationalRating[]>(
+      `${this.apiServerUrl}/nationalRatings`
+    );
+  }
 
   //InterNational Tours
 
@@ -225,16 +275,25 @@ public getNationalFileById(id: number): Observable<nationalFile> {
     );
   }
 
-
-  //ratingss
-  // submitRating(rating: number,id: number) {
-  //   return this.http.post(`${this.apiServerUrl}/internationalTour/addratings`, { rating ,id});
-  // }
-  submitRating(rating: number,id: number) {
-    return this.http.post(`${this.apiServerUrl}/internationalTour/addrating`, { rating ,id});
+  //add rating
+  submitRating(rating: number, id: number) {
+    return this.http.post(`${this.apiServerUrl}/internationalTour/addrating`, {
+      rating,
+      id,
+    });
   }
 
-  getAverageRating(itemID: number) {
-    return this.http.get(`${this.apiServerUrl}/internationalTour/ratings/${itemID}`);
+  //get avg rating
+  getAverageRating(id: number) {
+    return this.http.get(
+      `${this.apiServerUrl}/internationalTour/ratings/${id}`
+    );
+  }
+
+  //get all ratings
+  public getAllRatings(): Observable<internationalRating[]> {
+    return this.http.get<internationalRating[]>(
+      `${this.apiServerUrl}/internationalTourRatings`
+    );
   }
 }

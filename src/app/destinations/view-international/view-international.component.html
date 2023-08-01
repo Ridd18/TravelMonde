@@ -68,24 +68,20 @@
             >
           </p></b
         >
-        <h2>Angular Star Rating Example</h2>
-
+    
         <div class="rating">
-          <rating
-            style="color: #81b3de; font-size: 40px"
-            [(ngModel)]="rate"
-            [max]="max"
-            [readonly]="isReadonly"
-            onclick="addInternationalRating(ratingForm)"
-          >
-          </rating>
-
           <div class="star-rating">
-            <span *ngFor="let i of [1, 2, 3, 4, 5]" class="star" (click)="onStarClick(i)">
-              <span [class.filled]="selectedRating !== null && selectedRating >= i">&#9733;</span>
+            <span
+              *ngFor="let i of [1, 2, 3, 4, 5]"
+              class="star"
+              (click)="onStarClick(i)"
+            >
+              <span
+                [class.filled]="selectedRating !== null && selectedRating >= i"
+                >&#9733;</span
+              >
               <!-- <span [class.empty]="selectedRating === null || selectedRating < i">&#9734;</span> -->
             </span>
-           
           </div>
         </div>
       </div>

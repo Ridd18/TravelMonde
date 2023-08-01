@@ -1,4 +1,3 @@
-
 <input
   type="hidden"
   name="id"
@@ -31,9 +30,7 @@
     <!-- card left -->
     <div class="product-imgs">
       <div class="img-display">
-        <img
-          [src]=""
-        />
+        <img [src]="" />
       </div>
     </div>
     <!-- card right -->
@@ -55,19 +52,35 @@
           </p></b
         >
         <b
-        ><p class="product-file-name">
-          {{ camping?.name }}: &nbsp; 
-         
-          <a (click)="downloadFile(campFile.file_name)">download</a>
-        </p></b
-      >
+          ><p class="product-file-name">
+            {{ camping?.name }}: &nbsp;
+
+            <a (click)="downloadFile(campFile.file_name)">download</a>
+          </p></b
+        >
+
+        <div class="rating">
+          <div class="star-rating">
+            <span
+              *ngFor="let i of [1, 2, 3, 4, 5]"
+              class="star"
+              (click)="onStarClick(i)"
+            >
+              <span
+                [class.filled]="selectedRating !== null && selectedRating >= i"
+                >&#9733;</span
+              >
+              <!-- <span [class.empty]="selectedRating === null || selectedRating < i">&#9734;</span> -->
+            </span>
+          </div>
+        </div>
       </div>
       <div class="purchase-info">
-        <button type="button" class="btn" >
+        <button type="button" class="btn">
           Book your Camping &nbsp; <i class="fas fa fa-plus"></i>
         </button>
         <button type="button" class="btn" (click)="goBackToCampings()">
-          Back to campings &nbsp; <i class="fas fa fa-undo" ></i>
+          Back to campings &nbsp; <i class="fas fa fa-undo"></i>
         </button>
       </div>
     </div>

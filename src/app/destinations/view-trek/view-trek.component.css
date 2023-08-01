@@ -249,3 +249,9 @@ textarea {
   font-size: inherit;
   line-height: inherit;
 }
+
+.star {
+  font-size: 40px;
+  cursor:pointer;
+  color: #81b3de
+} 

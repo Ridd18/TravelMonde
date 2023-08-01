@@ -14,20 +14,16 @@ import { DestinationsService } from 'src/app/services/destinations.service';
   styleUrls: ['./view-international.component.css'],
 })
 export class ViewInternationalComponent {
-
   //ratiing
-  @Input() itemID!: number;
-  @Input() averageRating!: number;
+  idForRating: number;
 
-  selectedRating: number |null = null;
+  selectedRating: number | null = null;
 
   //end rating
 
   public internationalTours: InternationalTour[];
 
   selectedId: number;
-
-  idForRating: number;
 
 
   // public trek: Trek[];
@@ -49,12 +45,6 @@ export class ViewInternationalComponent {
   fileName: string;
 
   internationalTourName: string;
-
-  max = 5;
-  rate = 2;
-  isReadonly = false;
-
-  form: FormGroup;
 
   constructor(
     private router: Router,
@@ -152,12 +142,12 @@ export class ViewInternationalComponent {
 
   onStarClick(rating: number) {
     this.selectedRating = rating;
-    const idInRating = this.idForRating
-    console.log("id for rating",idInRating)
+    const idInRating = this.idForRating;
+    console.log('id for rating', idInRating);
 
-    this.service.submitRating(rating,this.idForRating ).subscribe(
+    this.service.submitRating(rating, this.idForRating).subscribe(
       (response) => {
-        console.log(response)
+        console.log(response);
         // Handle successful submission, e.g., show a success message
         console.log('Rating submitted successfully');
       },
@@ -167,5 +157,4 @@ export class ViewInternationalComponent {
       }
     );
   }
-
 }

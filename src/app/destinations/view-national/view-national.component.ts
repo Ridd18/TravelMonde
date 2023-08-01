@@ -14,6 +14,14 @@ import { DestinationsService } from 'src/app/services/destinations.service';
 })
 export class ViewNationalComponent {
 
+    //ratiing
+   
+    idForRating: number;
+
+    selectedRating: number |null = null;
+  
+    //end rating
+
   public nationalTours: NationalTour[];
 
   selectedId: number;
@@ -50,6 +58,7 @@ export class ViewNationalComponent {
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       this.idForFile = +params['id'];
+      this.idForRating = +params['id'];
       console.log(this.id);
       console.log(this.idForFile);
     });
@@ -130,6 +139,24 @@ export class ViewNationalComponent {
       },
       (error) => {
         console.log(error);
+      }
+    );
+  }
+
+  onStarClick(rating: number) {
+    this.selectedRating = rating;
+    const idInRating = this.idForRating;
+    console.log('id for rating', idInRating);
+
+    this.service.submitNationalRating(rating, this.idForRating).subscribe(
+      (response) => {
+        console.log(response);
+        // Handle successful submission, e.g., show a success message
+        console.log('Rating submitted successfully');
+      },
+      (error) => {
+        // Handle error during submission, e.g., show an error message
+        console.error('Error submitting rating:', error);
       }
     );
   }
