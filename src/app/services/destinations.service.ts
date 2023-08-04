@@ -22,6 +22,7 @@ import { internationalRating } from '../models/internationalRatingModel';
 import { trekRating } from '../models/trekRatingModel';
 import { campingRating } from '../models/campingRatingModel';
 import { nationalRating } from '../models/nationalRatingModel';
+import { Feedback } from '../models/feedbackModel';
 
 @Injectable({
   providedIn: 'root',
@@ -295,5 +296,33 @@ export class DestinationsService {
     return this.http.get<internationalRating[]>(
       `${this.apiServerUrl}/internationalTourRatings`
     );
+  }
+
+  //FEEDBACK
+
+  public addFeedback(feedback: Feedback): Observable<Feedback> {
+    console.log(feedback);
+    return this.http.post<Feedback>(
+      `${this.apiServerUrl}/feedback/add`,
+      feedback
+    );
+  }
+
+  public getFeedbacks(): Observable<Feedback[]> {
+    return this.http.get<Feedback[]>(`${this.apiServerUrl}/feedback`);
+  }
+
+  public getFeedback(id: number): Observable<Feedback> {
+    return this.http.get<Feedback>(`${this.apiServerUrl}/feedback/${id}`);
+  }
+
+  public deleteFeedback(feedbackid: number): Observable<void> {
+    return this.http.delete<void>(
+      `${this.apiServerUrl}/feedback/delete/${feedbackid}`
+    );
+  }
+
+  public countFeedbacks(): Observable<any> {
+    return this.http.get<any>(`${this.apiServerUrl}/feedback/count`);
   }
 }

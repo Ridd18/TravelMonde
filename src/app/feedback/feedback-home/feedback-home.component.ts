@@ -1,4 +1,10 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs';
+import { Feedback } from 'src/app/models/feedbackModel';
+import { NationalTour } from 'src/app/models/nationalTourModel';
+import { DestinationsService } from 'src/app/services/destinations.service';
 import Swiper from 'swiper';
 
 @Component({
@@ -8,37 +14,41 @@ import Swiper from 'swiper';
 })
 export class FeedbackHomeComponent {
 
+  public feedbacks: Feedback[];
 
-  // const feedback = document.querySelector('.feedback__slider');
-  // const feedback_offset = 300;
-  
-  // function feedbackUpdateHeight(height: number): void {
-  //   if (!height) return false;
-  //   feedback.style.height = `${height + feedback_offset}px`;
-  // }
-  
-  // if (feedback) {
-  //   feedbackUpdateHeight(feedback.querySelector('.feedback__item').offsetHeight);
-  
-  //   const feedback_slider = new Swiper(feedback, {
-  //     direction: 'vertical',
-  //     slidesPerView: 'auto',
-  //     autoHeight: true,
-  //     centeredSlides: true,
-  //     spaceBetween: 30,
-  //     grabCursor: true,
-  //     loop: true,
-  //     mousewheel: true,
-  //     navigation: {
-  //       nextEl: '.swiper-button-next',
-  //       prevEl: '.swiper-button-prev'
-  //     }
-  //   });
-  
-  //   feedback_slider.on('slideChange', () => {
-  //     setTimeout(() => {
-  //       feedbackUpdateHeight(feedback_slider.slides[feedback_slider.activeIndex].offsetHeight);
-  //     }, 300);
-  //   });
-  // }
+  public feedback$:any
+
+  selectedId: number;
+
+  constructor(
+    private service: DestinationsService,
+    private route:ActivatedRoute
+    
+  ) {}
+
+  ngOnInit(): void {
+    this.getFeedbacks(); 
+
+    this.feedback$ = this.route.paramMap.pipe(
+      switchMap((params) => {
+        this.selectedId = Number(params.get('id'));
+        console.log(this.selectedId);
+        return this.service.getFeedbacks();
+      })
+    );
+
+   }
+   
+  public getFeedbacks(): void {
+    this.service.getFeedbacks().subscribe(
+      (response: Feedback[]) => {
+        this.feedbacks = response;
+        console.log(this.feedbacks)
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
 }

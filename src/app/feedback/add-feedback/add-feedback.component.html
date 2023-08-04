@@ -1,0 +1,75 @@
+<html>
+  <head></head>
+  <body>
+    <div class="section">
+      <div class="container">
+        <form autocomplete="off" class="form" #addFeedbackForm="ngForm">
+          <div class="control">
+            <h1>Feedback Form</h1>
+          </div>
+          <div class="control block-cube block-input">
+            <input class="form-control" ngModel name="name" placeholder="name" type="text" />
+            <div class="bg-top">
+              <div class="bg-inner"></div>
+            </div>
+            <div class="bg-right">
+              <div class="bg-inner"></div>
+            </div>
+            <div class="bg">
+              <div class="bg-inner"></div>
+            </div>
+          </div>
+          <div class="control block-cube block-input">
+            <input class="form-control" ngModel name="email" type="text" placeholder="email" />
+            <div class="bg-top">
+              <div class="bg-inner"></div>
+            </div>
+            <div class="bg-right">
+              <div class="bg-inner"></div>
+            </div>
+            <div class="bg">
+              <div class="bg-inner"></div>
+            </div>
+          </div>
+          <div class="control block-cube block-input">
+            <!-- <textarea class="form-control" ngModel name="mesage" placeholder="mesaage" id="" cols="30" rows="10"></textarea> -->
+            <input class="form-control" ngModel name="message" type="text" placeholder="mesaage" />
+            <div class="bg-top">
+              <div class="bg-inner"></div>
+            </div>
+            <div class="bg-right">
+              <div class="bg-inner"></div>
+            </div>
+            <div class="bg">
+              <div class="bg-inner"></div>
+            </div> 
+          </div>
+          <!-- <div class="control block-cube block-input">
+            <input class="form-control" ngModel name="message" type="text" placeholder="mesaage" />
+            <div class="bg-top">
+              <div class="bg-inner"></div>
+            </div>
+            <div class="bg-right">
+              <div class="bg-inner"></div>
+            </div>
+            <div class="bg">
+              <div class="bg-inner"></div>
+            </div>
+          </div> -->
+          <button class="btn block-cube block-cube-hover" type="submit" (click)="addFeedback(addFeedbackForm)">
+            <div class="bg-top">
+              <div class="bg-inner"></div>
+            </div>
+            <div class="bg-right">
+              <div class="bg-inner"></div>
+            </div>
+            <div class="bg">
+              <div class="bg-inner"></div>
+            </div>
+            <div class="text">Submit</div>
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
