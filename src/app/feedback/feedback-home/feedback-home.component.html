@@ -1,6 +1,5 @@
 <html>
   <head>
-    <title>Testimonial HTML</title>
     <!--Stylesheet--------------------------->
     <!--Fav-icon------------------------------>
     <link rel="shortcut icon" href="images/fav-icon.png" />
@@ -21,10 +20,21 @@
     <!--Testimonials------------------->
     <section id="testimonials">
       <!--heading--->
+      <div class="testimonial-headings">
+        <div class="buttons">
+          <a routerLink="" routerLinkActive="active"><h1>Home</h1></a>
+        </div>
+        <div class="buttons">
+          <a routerLink="/feedback/add" routerLinkActive="active"
+            ><h1>Give Feedback</h1></a
+          >
+        </div>
+      </div>
+
       <div class="testimonial-heading">
-       
         <h1>Feedbacks</h1>
       </div>
+
       <!--testimonials-box-container------>
       <div class="testimonial-box-container">
         <!--BOX-1-------------->
@@ -34,31 +44,26 @@
             <!--profile----->
             <div class="profile">
               <!--img---->
-              <div class="profile-img">
-               
-              </div>
+              <div class="profile-img"></div>
               <!--name-and-username-->
               <div class="name-user">
-                <strong>{{feedback.name}}</strong>
-                <span>{{feedback.email}}</span>
+                <strong>{{ feedback.name }}</strong>
+                <span>{{ feedback.email }}</span>
               </div>
             </div>
             <!--reviews------>
-           
           </div>
           <!--Comments---------------------------------------->
           <div class="client-comment">
             <p>
-            <br />
-            
+              <br />
             </p>
 
             <hr />
-            {{feedback.message}}
+            {{ feedback.message }}
           </div>
         </div>
         <!--BOX-2-------------->
-
       </div>
     </section>
   </body>

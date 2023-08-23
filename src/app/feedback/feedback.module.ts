@@ -6,6 +6,8 @@ import { FeedbackHomeComponent } from './feedback-home/feedback-home.component';
 import { AddFeedbackComponent } from './add-feedback/add-feedback.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { SharedModule } from '../shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FeedbackRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class FeedbackModule { }
