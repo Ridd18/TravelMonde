@@ -1,25 +1,59 @@
-<!-- <h3 class="pb-5">Please proceed with the payment</h3>
+<input
+  type="hidden"
+  name="id"
+  ngModel="{{ trek?.id }}"
+  class="form-control"
+  id="id"
+  placeholder="ID"
+/>
 
-<form class="mb-5" >
+<!-- <div class="container">
+  <div class="payment-box">
+    <h2>Make a Payment</h2>
+    <form (ngSubmit)="submitPaymentForm()" #paymentForm="ngForm">
+      <div class="form-group">
+        <label for="card-element">Card Information</label>
+        <div id="card-element" class="card-element"></div>
+      </div>
+      <button
+        type="submit"
+        [disabled]="!paymentForm.valid"
+        class="btn btn-primary"
+      >
+        Pay Now
+      </button>
+    </form>
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="payment-box">
+    <h2>Make a Payment</h2>
     <div class="form-group">
-        <input type="text" class="form-control" placeholder="Full Name">
-    </div>
-    <div class="form-group">
-        <input type="number" class="form-control" placeholder="Amount">
-    </div>
-    <div class="form-group">
-        <div id="card-element" class="field"></div>
-    </div>
-    <button class="" type="submit">BUY</button>
-</form> -->
+      <label for="card-element">Card Information</label>
 
-<!-- <div #cardElement id="card-element" style="border: 1px solid #ccc; padding: 10px;"></div>
-<button (click)="createPayment()">Pay Now</button> -->
-
-<!-- <div #cardElement id="card-element" style="border: 1px solid #ccc; padding: 10px;"></div>
-<input type="number" [(ngModel)]="paymentAmount" placeholder="Enter Amount" />
-<button (click)="createPayment()">Pay {{ paymentAmount | currency: 'USD' }}</button> -->
-
-<div #cardElement id="card-element" style="border: 1px solid #ccc; padding: 10px;"></div>
-<input type="number" [(ngModel)]="paymentAmount" placeholder="Enter Amount" />
-<button (click)="createPayment()">Pay {{ paymentAmount | currency: 'USD' }}</button>
+      <div #cardElement id="card-element"></div>
+    </div>
+    <p class="start_bid">Price: <span></span>{{ trek?.price }}</p>
+    <!-- 
+    <button (click)="createPayment()">
+      Pay {{ finalAmount | currency : "INR" }}
+    </button> -->
+    <button
+      class="btn block-cube block-cube-hover"
+      type="submit"
+      (click)="createPayment()"
+    >
+      <div class="bg-top">
+        <div class="bg-inner"></div>
+      </div>
+      <div class="bg-right">
+        <div class="bg-inner"></div>
+      </div>
+      <div class="bg">
+        <div class="bg-inner"></div>
+      </div>
+      <div class="text">Pay {{ finalAmount | currency : "INR" }}</div>
+    </button>
+  </div>
+</div>

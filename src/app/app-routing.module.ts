@@ -39,9 +39,13 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'payment',
+    path: 'payment/:id',
     component: PaymentsComponent,
   },
+  // {
+  //   path: 'payment',
+  //   component: PaymentsComponent,
+  // },
 
 ];
 

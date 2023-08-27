@@ -12,10 +12,10 @@ export class PaymentService {
   constructor(private http: HttpClient) {}
 
   
-  createPaymentIntent(paymentAmount: number): Observable<any> {
+  createPaymentIntent(finalAmount: number): Observable<any> {
    
     const url = `${this.apiServerUrl}/create-payment-intent`;
-    const payload = { amount: paymentAmount };
+    const payload = { amount: finalAmount };
 
     return this.http.post(url, payload);
 

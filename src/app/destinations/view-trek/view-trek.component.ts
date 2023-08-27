@@ -6,6 +6,7 @@ import { trekFiles } from 'src/app/models/trekFileModel';
 import { Trek } from 'src/app/models/trekModel';
 import { DestinationsService } from 'src/app/services/destinations.service';
 import { trekFile } from 'src/app/models/trekFilesModel';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-view-trek',
@@ -43,6 +44,11 @@ export class ViewTrekComponent {
 
   TrekName: string;
 
+  public trek$:any
+
+  IdForPayment: number;
+
+
   constructor(
     private router: Router,
     private service: DestinationsService,
@@ -63,6 +69,14 @@ export class ViewTrekComponent {
     this.getTrek(this.id);
 
     this.getTrekFile(this.idForFile);
+
+    this.trek$ = this.route.paramMap.pipe(
+      switchMap((params) => {
+        this.IdForPayment = Number(params.get('id'));
+        console.log(this.IdForPayment);
+        return this.service.getTreks();
+      })
+    );
   }
 
   public getTrek(id: number) {
@@ -152,5 +166,9 @@ export class ViewTrekComponent {
         console.error('Error submitting rating:', error);
       }
     );
+  }
+
+  public goToBooking() {
+    this.router.navigate(['/payment']);
   }
 }
