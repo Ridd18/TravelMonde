@@ -1,7 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router,ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import * as saveAs from 'file-saver';
+import { switchMap } from 'rxjs';
 import { nationalFiles } from 'src/app/models/nationalFileModel';
 import { nationalFile } from 'src/app/models/nationalFilesModel';
 import { NationalTour } from 'src/app/models/nationalTourModel';
@@ -10,17 +11,16 @@ import { DestinationsService } from 'src/app/services/destinations.service';
 @Component({
   selector: 'app-view-national',
   templateUrl: './view-national.component.html',
-  styleUrls: ['./view-national.component.css']
+  styleUrls: ['./view-national.component.css'],
 })
 export class ViewNationalComponent {
+  //ratiing
 
-    //ratiing
-   
-    idForRating: number;
+  idForRating: number;
 
-    selectedRating: number |null = null;
-  
-    //end rating
+  selectedRating: number | null = null;
+
+  //end rating
 
   public nationalTours: NationalTour[];
 
@@ -45,6 +45,10 @@ export class ViewNationalComponent {
 
   NationalName: string;
 
+  public national$: any;
+
+  IdForPayment: number;
+
   constructor(
     private router: Router,
     private service: DestinationsService,
@@ -63,9 +67,16 @@ export class ViewNationalComponent {
       console.log(this.idForFile);
     });
     this.getNationalTour(this.id);
-  
+
     this.getNationalFile(this.idForFile);
-    
+
+    this.national$ = this.route.paramMap.pipe(
+      switchMap((params) => {
+        this.IdForPayment = Number(params.get('id'));
+        console.log(this.IdForPayment);
+        return this.service.getNationalTours();
+      })
+    );
   }
 
   public getNationalTour(id: number) {
@@ -75,8 +86,7 @@ export class ViewNationalComponent {
         this.nationalTour = data;
       },
       (error) => {
-        // this.getMaxBid(id);
-        
+      
 
         console.log(error);
       }
@@ -87,7 +97,7 @@ export class ViewNationalComponent {
     this.service.getNationalTours().subscribe(
       (response: NationalTour[]) => {
         this.nationalTours = response;
-        console.log(this.nationalTours)
+        console.log(this.nationalTours);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -102,7 +112,6 @@ export class ViewNationalComponent {
   public goBackToNationalTours() {
     this.router.navigate(['/destinations/national']);
   }
-
 
   public getAllNationalFiles(): void {
     this.service.getNationalFiles().subscribe(
@@ -161,4 +170,7 @@ export class ViewNationalComponent {
     );
   }
 
+  public goToBooking() {
+    this.router.navigate(['/payment']);
+  }
 }

@@ -1,0 +1,37 @@
+<input
+  type="hidden"
+  name="id"
+  ngModel="{{ camping?.id }}"
+  class="form-control"
+  id="id"
+  placeholder="ID"
+/>
+
+<div class="container">
+  <div class="payment-box">
+    <h2>Make a Payment</h2>
+    <div class="form-group">
+      <label for="card-element">Card Information</label>
+
+      <div #cardElement id="card-element"></div>
+    </div>
+    <p class="start_bid">Price: <span></span>{{ camping?.price }}</p>
+
+    <button
+      class="btn block-cube block-cube-hover"
+      type="submit"
+      (click)="createPayment()"
+    >
+      <div class="bg-top">
+        <div class="bg-inner"></div>
+      </div>
+      <div class="bg-right">
+        <div class="bg-inner"></div>
+      </div>
+      <div class="bg">
+        <div class="bg-inner"></div>
+      </div>
+      <div class="text">Pay {{ finalAmount | currency : "INR" }}</div>
+    </button>
+  </div>
+</div>

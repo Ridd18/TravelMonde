@@ -9,6 +9,10 @@ import { ViewTrekComponent } from './view-trek/view-trek.component';
 import { ViewCampingComponent } from './view-camping/view-camping.component';
 import { ViewNationalComponent } from './view-national/view-national.component';
 import { ViewInternationalComponent } from './view-international/view-international.component';
+import { NationalPaymentComponent } from './national-payment/national-payment.component';
+import { InternationalPaymentComponent } from './international-payment/international-payment.component';
+import { CampingPaymentComponent } from './camping-payment/camping-payment.component';
+import { TrekPaymentComponent } from './trek-payment/trek-payment.component';
 
 const routes: Routes = [
   {
@@ -24,12 +28,20 @@ const routes: Routes = [
     component: ViewTrekComponent,
   },
   {
+    path: 'trekPayment/:id',
+    component: TrekPaymentComponent,
+  },
+  {
     path: 'camping',
     component: DestinationsCampingComponent,
   },
   {
     path: 'camping/:id',
     component: ViewCampingComponent,
+  },
+  {
+    path: 'campingPayment/:id',
+    component: CampingPaymentComponent,
   },
   {
     path: 'national',
@@ -40,6 +52,11 @@ const routes: Routes = [
     component: ViewNationalComponent,
   },
   {
+    path: 'nationalPayment/:id',
+    component: NationalPaymentComponent,
+  }
+  ,
+  {
     path: 'international',
     component: DestinationsInternationalComponent,
   },
@@ -47,6 +64,11 @@ const routes: Routes = [
     path: 'international/:id',
     component: ViewInternationalComponent,
   },
+  {
+    path: 'internationalPayment/:id',
+    component: InternationalPaymentComponent,
+  }
+
 ];
 
 @NgModule({

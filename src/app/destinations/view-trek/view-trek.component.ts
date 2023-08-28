@@ -14,13 +14,12 @@ import { switchMap } from 'rxjs';
   styleUrls: ['./view-trek.component.css'],
 })
 export class ViewTrekComponent {
+  //ratiing
+  idForRating: number;
 
-    //ratiing
-    idForRating: number;
+  selectedRating: number | null = null;
 
-    selectedRating: number | null = null;
-  
-    //end rating
+  //end rating
   public treks: Trek[];
 
   selectedId: number;
@@ -44,10 +43,9 @@ export class ViewTrekComponent {
 
   TrekName: string;
 
-  public trek$:any
+  public trek$: any;
 
   IdForPayment: number;
-
 
   constructor(
     private router: Router,

@@ -1,55 +1,32 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-
-import {
-  loadStripe,
-  Stripe,
-  StripeCardElement,
-  StripeElements,
-} from '@stripe/stripe-js';
-import { PaymentService } from '../services/payment.service';
-import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Trek } from '../models/trekModel';
-import { DestinationsService } from '../services/destinations.service';
-import { NationalTour } from '../models/nationalTourModel';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import {
+  Stripe,
+  StripeElements,
+  StripeCardElement,
+  loadStripe,
+} from '@stripe/stripe-js';
+import { NationalTour } from 'src/app/models/nationalTourModel';
+import { Trek } from 'src/app/models/trekModel';
+import { DestinationsService } from 'src/app/services/destinations.service';
+import { PaymentService } from 'src/app/services/payment.service';
 
 @Component({
-  selector: 'app-payments',
-  templateUrl: './payments.component.html',
-  styleUrls: ['./payments.component.css'],
+  selector: 'app-trek-payment',
+  templateUrl: './trek-payment.component.html',
+  styleUrls: ['./trek-payment.component.css'],
 })
-export class PaymentsComponent implements OnInit {
-
+export class TrekPaymentComponent implements OnInit {
   public treks: Trek[];
-  public nationalTours: NationalTour[];
 
   trek: any;
-  nationalTour: any;
 
   id: number;
-  idForNational: number;
 
   paymentAmount3: any;
 
   finalAmount: number;
-
-  bidAmount: number;
-
-  ngOnInit(): void {
-    this.getTreks();
-    this.getNationalTours()
-
-    this.route.params.subscribe((params: Params) => {
-      this.id = +params['id'];
-      this.idForNational = +params['id'];
-
-      console.log(this.id);
-      console.log(this.idForNational);
-    });
-
-    this.getTrek(this.id);
-    this.getNationalTour(this.id);
-  }
 
   stripe: Stripe | null = null;
   elements: StripeElements;
@@ -57,7 +34,17 @@ export class PaymentsComponent implements OnInit {
 
   @ViewChild('cardElement') cardElement?: ElementRef;
 
+  ngOnInit(): void {
+    this.getTreks();
 
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params['id'];
+
+      console.log(this.id);
+    });
+
+    this.getTrek(this.id);
+  }
 
   constructor(
     private paymentService: PaymentService,
@@ -115,18 +102,6 @@ export class PaymentsComponent implements OnInit {
     );
   }
 
-  public getNationalTours(): void {
-    this.service.getNationalTours().subscribe(
-      (response: NationalTour[]) => {
-        this.nationalTours = response;
-        console.log(this.nationalTours);
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-  }
-
   public getTrek(id: number) {
     this.service.getTrek(this.id).subscribe(
       (data) => {
@@ -142,28 +117,6 @@ export class PaymentsComponent implements OnInit {
         console.log('payment amount is', this.finalAmount);
       },
       (error) => {
-        console.log(error);
-      }
-    );
-  }
-
-  public getNationalTour(id: number) {
-    this.service.getNationalTour(this.id).subscribe(
-      (data) => {
-        console.log(data);
-        this.nationalTour = data;
-
-        this.paymentAmount3 = JSON.stringify(this.nationalTour.price);
-
-        console.log(this.paymentAmount3);
-
-        this.finalAmount = parseInt(this.paymentAmount3);
-
-        console.log('payment amount is', this.finalAmount);
-      },
-      (error) => {
-        // this.getMaxBid(id);
-
         console.log(error);
       }
     );

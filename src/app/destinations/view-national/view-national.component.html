@@ -82,7 +82,8 @@
         </div>
       </div>
       <div class="purchase-info">
-        <button type="button" class="btn">
+        
+        <button type="button" class="btn" [routerLink]="['/destinations/nationalPayment', nationalTour.national_id]" routerLinkActive="active">
           Book your Tour &nbsp; <i class="fas fa fa-plus"></i>
         </button>
         <button type="button" class="btn" (click)="goBackToNationalTours()">

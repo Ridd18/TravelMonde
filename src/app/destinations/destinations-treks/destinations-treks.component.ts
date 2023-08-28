@@ -21,9 +21,7 @@ export class DestinationsTreksComponent implements OnInit {
 
 
   constructor(
-    private router: Router,
     private service: DestinationsService,
-    private http: HttpClient,
     private route:ActivatedRoute
     
   ) {}

@@ -1,8 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { saveAs } from 'file-saver';
+import { switchMap } from 'rxjs';
 import { internationalFiles } from 'src/app/models/InternationalFileModel';
 import { internationalFile } from 'src/app/models/InternationalFilesModel';
 import { InternationalTour } from 'src/app/models/internationalTourModel';
@@ -46,6 +46,10 @@ export class ViewInternationalComponent {
 
   internationalTourName: string;
 
+  public international$: any;
+
+  IdForPayment: number;
+
   constructor(
     private router: Router,
     private service: DestinationsService,
@@ -67,6 +71,14 @@ export class ViewInternationalComponent {
     this.getInterNationalTour(this.id);
 
     this.getInterNationalTourFile(this.idForFile);
+
+    this.international$ = this.route.paramMap.pipe(
+      switchMap((params) => {
+        this.IdForPayment = Number(params.get('id'));
+        console.log(this.IdForPayment);
+        return this.service.getInternationalTours();
+      })
+    );
   }
 
   public getInterNationalTour(id: number) {

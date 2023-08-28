@@ -1,26 +1,25 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router,ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { campFiles } from 'src/app/models/campFileModel';
 import { campFile } from 'src/app/models/campFilesModel';
 import { Camping } from 'src/app/models/campingModel';
 import { saveAs } from 'file-saver';
 import { DestinationsService } from 'src/app/services/destinations.service';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-view-camping',
   templateUrl: './view-camping.component.html',
-  styleUrls: ['./view-camping.component.css']
+  styleUrls: ['./view-camping.component.css'],
 })
 export class ViewCampingComponent {
+  //ratiing
+  idForRating: number;
 
-    //ratiing
-    idForRating: number;
+  selectedRating: number | null = null;
 
-    selectedRating: number | null = null;
-  
-    //end rating
-  
+  //end rating
 
   public campings: Camping[];
 
@@ -45,9 +44,11 @@ export class ViewCampingComponent {
 
   fileName: string;
 
-  
+  CampName: string;
 
-  CampName: string
+  public camping$: any;
+
+  IdForPayment: number;
 
   constructor(
     private router: Router,
@@ -56,11 +57,9 @@ export class ViewCampingComponent {
     private http: HttpClient
   ) {}
 
-
   ngOnInit(): void {
     this.getCampings();
 
-   
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       this.idForFile = +params['id'];
@@ -69,9 +68,16 @@ export class ViewCampingComponent {
       console.log(this.idForFile);
     });
     this.getCamping(this.id);
-  
-    this.getCampFile(this.idForFile)
-    
+
+    this.getCampFile(this.idForFile);
+
+    this.camping$ = this.route.paramMap.pipe(
+      switchMap((params) => {
+        this.IdForPayment = Number(params.get('id'));
+        console.log(this.IdForPayment);
+        return this.service.getNationalTours();
+      })
+    );
   }
 
   public getCamping(id: number) {
@@ -82,7 +88,6 @@ export class ViewCampingComponent {
       },
       (error) => {
         // this.getMaxBid(id);
-        
 
         console.log(error);
       }
@@ -93,7 +98,7 @@ export class ViewCampingComponent {
     this.service.getCampings().subscribe(
       (response: Camping[]) => {
         this.campings = response;
-        console.log(this.campings)
+        console.log(this.campings);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -109,13 +114,11 @@ export class ViewCampingComponent {
     this.router.navigate(['/destinations/camping']);
   }
 
-
   public getAllCampFiles(): void {
     this.service.getCampFiles().subscribe(
       (response: campFiles[]) => {
         this.items2 = response;
         console.log(this.items2);
-      
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -123,7 +126,6 @@ export class ViewCampingComponent {
     );
     //
   }
-
 
   downloadFile(fileName: string) {
     this.http

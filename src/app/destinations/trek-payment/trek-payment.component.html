@@ -7,34 +7,6 @@
   placeholder="ID"
 />
 
-<input
-  type="hidden"
-  name="id"
-  ngModel="{{ nationalTour?.id }}"
-  class="form-control"
-  id="id"
-  placeholder="ID"
-/>
-
-<!-- <div class="container">
-  <div class="payment-box">
-    <h2>Make a Payment</h2>
-    <form (ngSubmit)="submitPaymentForm()" #paymentForm="ngForm">
-      <div class="form-group">
-        <label for="card-element">Card Information</label>
-        <div id="card-element" class="card-element"></div>
-      </div>
-      <button
-        type="submit"
-        [disabled]="!paymentForm.valid"
-        class="btn btn-primary"
-      >
-        Pay Now
-      </button>
-    </form>
-  </div>
-</div> -->
-
 <div class="container">
   <div class="payment-box">
     <h2>Make a Payment</h2>
@@ -44,10 +16,7 @@
       <div #cardElement id="card-element"></div>
     </div>
     <p class="start_bid">Price: <span></span>{{ trek?.price }}</p>
-    <!-- 
-    <button (click)="createPayment()">
-      Pay {{ finalAmount | currency : "INR" }}
-    </button> -->
+
     <button
       class="btn block-cube block-cube-hover"
       type="submit"

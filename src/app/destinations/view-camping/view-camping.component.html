@@ -76,7 +76,7 @@
         </div>
       </div>
       <div class="purchase-info">
-        <button type="button" class="btn">
+        <button type="button" class="btn" [routerLink]="['/destinations/campingPayment', camping.camping_id]" routerLinkActive="active">
           Book your Camping &nbsp; <i class="fas fa fa-plus"></i>
         </button>
         <button type="button" class="btn" (click)="goBackToCampings()">

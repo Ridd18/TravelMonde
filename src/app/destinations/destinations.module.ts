@@ -15,6 +15,10 @@ import { ViewInternationalComponent } from './view-international/view-internatio
 import { SharedModule } from '../shared/shared.module';
 
 import { RatingModule } from 'ngx-bootstrap/rating';
+import { NationalPaymentComponent } from './national-payment/national-payment.component';
+import { InternationalPaymentComponent } from './international-payment/international-payment.component';
+import { CampingPaymentComponent } from './camping-payment/camping-payment.component';
+import { TrekPaymentComponent } from './trek-payment/trek-payment.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { RatingModule } from 'ngx-bootstrap/rating';
     ViewTrekComponent,
     ViewCampingComponent,
     ViewNationalComponent,
-    ViewInternationalComponent
+    ViewInternationalComponent,
+    NationalPaymentComponent,
+    InternationalPaymentComponent,
+    CampingPaymentComponent,
+    TrekPaymentComponent
   ],
   imports: [
     CommonModule,
