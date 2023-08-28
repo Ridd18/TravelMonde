@@ -73,7 +73,7 @@ export class CampingPaymentComponent implements OnInit {
 
     if (token) {
       this.paymentService
-        .createPaymentIntent(this.finalAmount)
+        .createCampingPaymentIntent(this.finalAmount)
         .subscribe((response) => {
           const clientSecret = response.clientSecret;
           console.log(response.clientSecret);

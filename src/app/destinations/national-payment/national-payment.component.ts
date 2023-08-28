@@ -73,7 +73,7 @@ export class NationalPaymentComponent implements OnInit {
 
     if (token) {
       this.paymentService
-        .createPaymentIntent(this.finalAmount)
+        .createNationalPaymentIntent(this.finalAmount)
         .subscribe((response) => {
           const clientSecret = response.clientSecret;
           console.log(response.clientSecret);

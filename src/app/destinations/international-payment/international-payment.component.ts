@@ -72,7 +72,7 @@ export class InternationalPaymentComponent implements OnInit{
 
     if (token) {
       this.paymentService
-        .createPaymentIntent(this.finalAmount)
+        .createInternationalPaymentIntent(this.finalAmount)
         .subscribe((response) => {
           const clientSecret = response.clientSecret;
           console.log(response.clientSecret);
