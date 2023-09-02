@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule }   from '@angular/forms';
 
+import { NgChartsModule } from 'ng2-charts';
 
 
 import { HomeComponent } from './home/home.component';
@@ -31,7 +32,8 @@ import { PaymentsComponent } from './payments/payments.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule,  
+    BrowserAnimationsModule, 
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

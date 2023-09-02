@@ -83,6 +83,11 @@ export class DestinationsService {
     return this.http.get(`${this.apiServerUrl}/trek/ratings/${id}`);
   }
 
+  //get all avg rating
+  getTrekAverageRatings(): Observable<any> {
+    return this.http.get<any>(`${this.apiServerUrl}/trekAVGratings`);
+  }
+
   //get all ratings
   public getAllTrekRatings(): Observable<trekRating[]> {
     return this.http.get<trekRating[]>(`${this.apiServerUrl}/trekRatings`);
@@ -139,6 +144,11 @@ export class DestinationsService {
   //get avg rating
   getCampAverageRating(id: number) {
     return this.http.get(`${this.apiServerUrl}/camping/ratings/${id}`);
+  }
+
+  //get all avg rating
+  getCampingAverageRatings(): Observable<any> {
+    return this.http.get<any>(`${this.apiServerUrl}/campingAVGratings`);
   }
 
   //get all ratings
@@ -209,6 +219,11 @@ export class DestinationsService {
   //get avg rating
   getNationalAverageRating(id: number) {
     return this.http.get(`${this.apiServerUrl}/national/ratings/${id}`);
+  }
+
+  //get all avg rating
+  getNationalAverageRatings(): Observable<any> {
+    return this.http.get<any>(`${this.apiServerUrl}/nationalTourAVGratings`);
   }
 
   //get all ratings
@@ -289,6 +304,11 @@ export class DestinationsService {
     return this.http.get(
       `${this.apiServerUrl}/internationalTour/ratings/${id}`
     );
+  }
+
+  //get all avg rating
+  getInternationalAverageRatings(): Observable<any> {
+    return this.http.get<any>(`${this.apiServerUrl}/internationalTourAVGratings`);
   }
 
   //get all ratings

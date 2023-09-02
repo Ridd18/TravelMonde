@@ -7,7 +7,6 @@ import {
   StripeCardElement,
   loadStripe,
 } from '@stripe/stripe-js';
-import { NationalTour } from 'src/app/models/nationalTourModel';
 import { Trek } from 'src/app/models/trekModel';
 import { DestinationsService } from 'src/app/services/destinations.service';
 import { PaymentService } from 'src/app/services/payment.service';
@@ -27,6 +26,8 @@ export class TrekPaymentComponent implements OnInit {
   paymentAmount3: any;
 
   finalAmount: number;
+
+  amountInPaisa: number;
 
   stripe: Stripe | null = null;
   elements: StripeElements;
@@ -75,12 +76,12 @@ export class TrekPaymentComponent implements OnInit {
 
     if (token) {
       this.paymentService
-        .createPaymentIntent(this.finalAmount)
+        .createPaymentIntent(this.amountInPaisa)
         .subscribe((response) => {
           const clientSecret = response.clientSecret;
           console.log(response.clientSecret);
           console.log(clientSecret);
-          console.log(this.finalAmount);
+          console.log(this.amountInPaisa);
 
           this.router.navigate(['/home']);
           // Handle the client secret as needed
@@ -113,6 +114,10 @@ export class TrekPaymentComponent implements OnInit {
         console.log(this.paymentAmount3);
 
         this.finalAmount = parseInt(this.paymentAmount3);
+
+        this.amountInPaisa = this.finalAmount*100;
+
+         console.log(this.amountInPaisa);
 
         console.log('payment amount is', this.finalAmount);
       },

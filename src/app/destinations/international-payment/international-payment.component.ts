@@ -28,6 +28,7 @@ export class InternationalPaymentComponent implements OnInit{
   card: StripeCardElement;
 
   @ViewChild('cardElement') cardElement?: ElementRef;
+  amountInPaisa: number;
 
 
 
@@ -72,12 +73,12 @@ export class InternationalPaymentComponent implements OnInit{
 
     if (token) {
       this.paymentService
-        .createInternationalPaymentIntent(this.finalAmount)
+        .createInternationalPaymentIntent(this.amountInPaisa)
         .subscribe((response) => {
           const clientSecret = response.clientSecret;
           console.log(response.clientSecret);
           console.log(clientSecret);
-          console.log(this.finalAmount);
+          console.log(this.amountInPaisa);
 
           this.router.navigate(['/home']);
           // Handle the client secret as needed
@@ -111,6 +112,10 @@ export class InternationalPaymentComponent implements OnInit{
         console.log(this.paymentAmount3);
 
         this.finalAmount = parseInt(this.paymentAmount3);
+
+        this.amountInPaisa = this.finalAmount*100;
+
+        console.log(this.amountInPaisa);
 
         console.log('payment amount is', this.finalAmount);
       },

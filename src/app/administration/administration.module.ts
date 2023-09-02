@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgChartsModule } from 'ng2-charts';
 
 import { AdministrationRoutingModule } from './administration-routing.module';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
@@ -41,6 +42,7 @@ import { NationalFilesComponent } from './national-files/national-files.componen
     AdministrationRoutingModule,
     SharedModule,
     FormsModule,
+    NgChartsModule
   ],
 })
 export class AdministrationModule {}

@@ -1,8 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { DestinationsService } from 'src/app/services/destinations.service';
+import { ChartType } from 'chart.js/auto';
+import { trekRating } from 'src/app/models/trekRatingModel';
+import { campingRating } from 'src/app/models/campingRatingModel';
+import { nationalRating } from 'src/app/models/nationalRatingModel';
+import { internationalRating } from 'src/app/models/internationalRatingModel';
 
 @Component({
   selector: 'app-admin-home',
@@ -24,8 +28,12 @@ export class AdminHomeComponent implements OnInit {
   userCount: any;
   finalUserCount: any;
 
+  public trekRatings: trekRating[];
+  public campRatings: campingRating[];
+  public nationalRatings: nationalRating[];
+  public internationalRatings: internationalRating[];
+
   constructor(
-    private router: Router,
     private service: DestinationsService,
     private userService: AuthService
   ) {}
@@ -35,7 +43,141 @@ export class AdminHomeComponent implements OnInit {
     this.getCampingsCount();
     this.getNationalCount();
     this.getInternationalCount();
-    this.getUsersCount()
+    this.getUsersCount();
+    this.getAllTrekRatings();
+    this.getAllCampRatings();
+    this.getAllNationalRatings();
+    this.getAllInternationalRatings();
+  }
+
+  public pieChartType: ChartType = 'pie';
+  public pieChartLabels: string[] = [];
+  public pieChartData: any[] = [];
+  public pieChartLegend: boolean = true;
+
+  public pieChartTypeCamp: ChartType = 'pie';
+  public pieChartLabelsCamp: string[] = [];
+  public pieChartDataCamp: any[] = [];
+  public pieChartLegendCamp: boolean = true;
+
+  public pieChartTypeNational: ChartType = 'pie';
+  public pieChartLabelsNational: string[] = [];
+  public pieChartDataNational: any[] = [];
+  public pieChartLegendNational: boolean = true;
+
+  public pieChartTypeInternational: ChartType = 'pie';
+  public pieChartLabelsInternational: string[] = [];
+  public pieChartDataInternational: any[] = [];
+  public pieChartLegendInternational: boolean = true;
+
+  public getAllTrekRatings(): void {
+    this.service.getTrekAverageRatings().subscribe(
+      (response: any[]) => {
+        this.trekRatings = response;
+
+        // const ratings = response.map((item) => parseFloat(item.avg));
+        const labels = response.map((item) => `Trek ${item.trek_id}`);
+
+        const chartData = {
+          data: response.map((item) => parseFloat(item.avg)),
+        };
+        this.pieChartData = [chartData];
+
+        this.pieChartLabels = labels;
+        // this.pieChartData = ratings;
+
+        console.log(this.pieChartLabels);
+        console.log(this.pieChartData);
+
+        console.log(this.trekRatings);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public getAllCampRatings(): void {
+    this.service.getCampingAverageRatings().subscribe(
+      (response: any[]) => {
+        this.campRatings = response;
+
+        // const ratings = response.map((item) => parseFloat(item.avg));
+        const labels = response.map((item) => `Camp ${item.camping_id}`);
+
+        const chartData = {
+          data: response.map((item) => parseFloat(item.avg)),
+        };
+        this.pieChartDataCamp = [chartData];
+
+        this.pieChartLabelsCamp = labels;
+        // this.pieChartData = ratings;
+
+        console.log(this.pieChartLabelsCamp);
+        console.log(this.pieChartDataCamp);
+
+        console.log(this.campRatings);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public getAllNationalRatings(): void {
+    this.service.getNationalAverageRatings().subscribe(
+      (response: any[]) => {
+        this.nationalRatings = response;
+
+        // const ratings = response.map((item) => parseFloat(item.avg));
+        const labels = response.map(
+          (item) => `National Tour ${item.national_id}`
+        );
+
+        const chartData = {
+          data: response.map((item) => parseFloat(item.avg)),
+        };
+        this.pieChartDataNational = [chartData];
+
+        this.pieChartLabelsNational = labels;
+        // this.pieChartData = ratings;
+
+        console.log(this.pieChartLabelsNational);
+        console.log(this.pieChartDataNational);
+
+        console.log(this.nationalRatings);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public getAllInternationalRatings(): void {
+    this.service.getInternationalAverageRatings().subscribe(
+      (response: any[]) => {
+        this.internationalRatings = response;
+
+        // const ratings = response.map((item) => parseFloat(item.avg));
+        const labels = response.map((item) => `Trek ${item.international_id}`);
+
+        const chartData = {
+          data: response.map((item) => parseFloat(item.avg)),
+        };
+        this.pieChartDataInternational = [chartData];
+
+        this.pieChartLabelsInternational = labels;
+        // this.pieChartData = ratings;
+
+        console.log(this.pieChartLabelsInternational);
+        console.log(this.pieChartDataInternational);
+
+        console.log(this.internationalRatings);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
   }
 
   public getTrekCount(): any {

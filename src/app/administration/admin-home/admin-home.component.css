@@ -14,4 +14,29 @@
     padding-left: var(--x-gutter-x, 1.5rem);
     margin-right: auto;
     margin-left: auto;
+
+
 }
+
+.chart-container {
+   display: flex;
+  }
+
+.chart-container-trek {
+    width: 300px;
+    height: 300px;
+  }
+
+  .chart-container-camp {
+    width: 300px;
+    height: 300px;
+  }
+
+  .chart-container-national {
+    width: 300px;
+    height: 300px;
+  }
+  .chart-container-international {
+    width: 300px;
+    height: 300px;
+  }

@@ -1,7 +1,7 @@
 <!-- Dashboard -->
 <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
   <!-- Vertical Navbar -->
-<app-admin-nav></app-admin-nav>
+  <app-admin-nav></app-admin-nav>
   <!-- Main content -->
   <div class="h-screen flex-grow-1 overflow-y-lg-auto">
     <!-- Header -->
@@ -65,7 +65,9 @@
                       class="h6 font-semibold text-muted text-sm d-block mb-2"
                       >Users</span
                     >
-                    <span class="h3 font-bold mb-0">{{this.finalUserCount}}</span>
+                    <span class="h3 font-bold mb-0">{{
+                      this.finalUserCount
+                    }}</span>
                   </div>
                   <div class="col-auto">
                     <div
@@ -75,7 +77,6 @@
                     </div>
                   </div>
                 </div>
-       
               </div>
             </div>
           </div>
@@ -88,16 +89,21 @@
                       class="h6 font-semibold text-muted text-sm d-block mb-2"
                       >Collections</span
                     >
-                    <span class="h3 font-bold mb-0">{{this.finalTotal}}</span><br>
-                     <span class="text-nowrap text-xs text-muted"
-                    >Treks {{ this.finalTrekCount }}</span><br>
-                   
+                    <span class="h3 font-bold mb-0">{{ this.finalTotal }}</span
+                    ><br />
                     <span class="text-nowrap text-xs text-muted"
-                    >Camps {{ this.finalCampingCount }}</span><br>
+                      >Treks {{ this.finalTrekCount }}</span
+                    ><br />
+
                     <span class="text-nowrap text-xs text-muted"
-                    >National {{ this.finalNationalCount }}</span><br>
+                      >Camps {{ this.finalCampingCount }}</span
+                    ><br />
                     <span class="text-nowrap text-xs text-muted"
-                    >International {{ this.finalInternationalCount }}</span>
+                      >National {{ this.finalNationalCount }}</span
+                    ><br />
+                    <span class="text-nowrap text-xs text-muted"
+                      >International {{ this.finalInternationalCount }}</span
+                    >
                   </div>
                   <div class="col-auto">
                     <div
@@ -107,7 +113,6 @@
                     </div>
                   </div>
                 </div>
- 
               </div>
             </div>
           </div>
@@ -148,7 +153,56 @@
           <div class="card-header">
             <h5 class="mb-0">Analitycs</h5>
           </div>
-
+          <div class="chart-container">
+            <div class="chart-container-trek">
+              <div>
+                <canvas
+                  baseChart
+                  [datasets]="pieChartData"
+                  [labels]="pieChartLabels"
+                  [type]="pieChartType"
+                  [legend]="pieChartLegend"
+                >
+                </canvas>
+              </div>
+            </div>
+            <div class="chart-container-camp">
+              <div>
+                <canvas
+                  baseChart
+                  [datasets]="pieChartDataCamp"
+                  [labels]="pieChartLabelsCamp"
+                  [type]="pieChartTypeCamp"
+                  [legend]="pieChartLegendCamp"
+                >
+                </canvas>
+              </div>
+            </div>
+            <div class="chart-container-national">
+              <div>
+                <canvas
+                  baseChart
+                  [datasets]="pieChartDataNational"
+                  [labels]="pieChartLabelsNational"
+                  [type]="pieChartTypeNational"
+                  [legend]="pieChartLegendNational"
+                >
+                </canvas>
+              </div>
+            </div>
+            <div class="chart-container-international">
+              <div>
+                <canvas
+                  baseChart
+                  [datasets]="pieChartDataInternational"
+                  [labels]="pieChartLabelsInternational"
+                  [type]="pieChartTypeInternational"
+                  [legend]="pieChartLegendInternational"
+                >
+                </canvas>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>
