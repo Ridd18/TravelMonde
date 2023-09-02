@@ -28,6 +28,20 @@ export class AdminHomeComponent implements OnInit {
   userCount: any;
   finalUserCount: any;
 
+  feedbackCount: any;
+  finalFeedbackCount: any;
+
+  TrekPayment: any;
+  finalTrekPayment: any;
+  CampingPayment: any;
+  finalCampingPayment: any;
+  NationalPayment: any;
+  finalNationalPayment: any;
+  InternationalPayment: any;
+  finalInternationalPayment: any;
+  totalPayment: any;
+  finalTotalPayment: any;
+
   public trekRatings: trekRating[];
   public campRatings: campingRating[];
   public nationalRatings: nationalRating[];
@@ -43,11 +57,20 @@ export class AdminHomeComponent implements OnInit {
     this.getCampingsCount();
     this.getNationalCount();
     this.getInternationalCount();
+
     this.getUsersCount();
+
     this.getAllTrekRatings();
     this.getAllCampRatings();
     this.getAllNationalRatings();
     this.getAllInternationalRatings();
+
+    this.getFeedbackCount();
+
+    this.getTrekPayment();
+    this.getCampingsPayment();
+    this.getNationalPayment();
+    this.getInternationalPayment();
   }
 
   public pieChartType: ChartType = 'pie';
@@ -267,6 +290,106 @@ export class AdminHomeComponent implements OnInit {
         this.finalUserCount = JSON.stringify(this.userCount[0].UserCount);
 
         console.log(this.finalUserCount);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public getFeedbackCount(): any {
+    this.service.countFeedbacks().subscribe(
+      (response: any) => {
+        console.log(response);
+        this.feedbackCount = response;
+        this.finalFeedbackCount = JSON.stringify(
+          this.feedbackCount[0].feedbackCount
+        );
+
+        console.log(this.finalFeedbackCount);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public getTrekPayment(): any {
+    this.service.sumOfTrekPayments().subscribe(
+      (response: any) => {
+        console.log(response);
+        this.TrekPayment = response;
+        this.finalTrekPayment = (this.TrekPayment[0].TrekSum);
+
+        console.log(this.finalTrekPayment);
+
+        this.totalPayment = parseInt(this.finalTrekPayment);
+        console.log(' total payment of all tours', this.totalPayment);
+      },
+
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public getCampingsPayment(): any {
+    this.service.sumOfCampPayments().subscribe(
+      (response: any) => {
+        console.log(response);
+        this.CampingPayment = response;
+        this.finalCampingPayment = (this.CampingPayment[0].CampingSum);
+
+        console.log(this.finalCampingPayment);
+
+        this.totalPayment =
+          this.totalPayment + parseInt(this.finalCampingPayment);
+        console.log(' total payment of all tours', this.totalPayment);
+      },
+
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public getNationalPayment(): any {
+    this.service.sumOfNationalPayments().subscribe(
+      (response: any) => {
+        console.log(response);
+        this.NationalPayment = response;
+        this.finalNationalPayment = (this.NationalPayment[0].NationalSum);
+
+        console.log(this.finalNationalPayment);
+
+        this.totalPayment =
+          this.totalPayment + parseInt(this.finalNationalPayment);
+        console.log(' total payment of all tours', this.totalPayment);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public getInternationalPayment(): any {
+    this.service.sumOfInternationalPayments().subscribe(
+      (response: any) => {
+        console.log(response);
+        this.InternationalPayment = response;
+        this.finalInternationalPayment = (
+          this.InternationalPayment[0].InternationalSum
+        );
+
+        console.log(this.finalInternationalPayment);
+
+        this.totalPayment =
+          this.totalPayment + parseInt(this.finalInternationalPayment);
+
+        this.finalTotalPayment = this.totalPayment;
+
+        console.log('final total payment of all tours', this.finalTotalPayment);
+        console.log(' total payment of all tours', this.totalPayment);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

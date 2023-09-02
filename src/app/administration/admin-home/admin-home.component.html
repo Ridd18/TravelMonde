@@ -33,7 +33,33 @@
                       class="h6 font-semibold text-muted text-sm d-block mb-2"
                       >Budget</span
                     >
-                    <span class="h3 font-bold mb-0">$750.90</span>
+                    <span class="h3 font-bold mb-0">
+                      <span>&#8377;{{ this.finalTotalPayment }}</span>
+                      <br />
+                      <span class="text-nowrap text-xs text-muted"
+                        >Treks
+                        <span>&#8377; {{ this.finalTrekPayment }}</span></span
+                      ><br />
+
+                      <span class="text-nowrap text-xs text-muted"
+                        >Camps
+                        <span
+                          >&#8377; {{ this.finalCampingPayment }}</span
+                        ></span
+                      ><br />
+                      <span class="text-nowrap text-xs text-muted"
+                        >National
+                        <span
+                          >&#8377; {{ this.finalNationalPayment }}</span
+                        ></span
+                      ><br />
+                      <span class="text-nowrap text-xs text-muted"
+                        >International
+                        <span
+                          >&#8377; {{ this.finalInternationalPayment }}</span
+                        ></span
+                      >
+                    </span>
                   </div>
                   <div class="col-auto">
                     <div
@@ -42,16 +68,6 @@
                       <i class="bi bi-credit-card"></i>
                     </div>
                   </div>
-                </div>
-                <div class="mt-2 mb-0 text-sm">
-                  <span
-                    class="badge badge-pill bg-soft-success text-success me-2"
-                  >
-                    <i class="bi bi-arrow-up me-1"></i>13%
-                  </span>
-                  <span class="text-nowrap text-xs text-muted"
-                    >Since last month</span
-                  >
                 </div>
               </div>
             </div>
@@ -125,7 +141,9 @@
                       class="h6 font-semibold text-muted text-sm d-block mb-2"
                       >Feedbacks</span
                     >
-                    <span class="h3 font-bold mb-0">95%</span>
+                    <span class="h3 font-bold mb-0">{{
+                      this.finalFeedbackCount
+                    }}</span>
                   </div>
                   <div class="col-auto">
                     <div
@@ -135,23 +153,13 @@
                     </div>
                   </div>
                 </div>
-                <div class="mt-2 mb-0 text-sm">
-                  <span
-                    class="badge badge-pill bg-soft-success text-success me-2"
-                  >
-                    <i class="bi bi-arrow-up me-1"></i>10%
-                  </span>
-                  <span class="text-nowrap text-xs text-muted"
-                    >Since last month</span
-                  >
-                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="card shadow border-0 mb-7">
           <div class="card-header">
-            <h5 class="mb-0">Analitycs</h5>
+            <h5 class="mb-0">Analytics</h5>
           </div>
           <div class="chart-container">
             <div class="chart-container-trek">

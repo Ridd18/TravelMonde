@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <!--Stylesheet--------------------------->
+    <!--Fav-icon------------------------------>
+    <link rel="shortcut icon" href="images/fav-icon.png" />
+    <!--poppins-font-family------------------->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!--Font-Awesome----->
+    <script
+      src="https://kit.fontawesome.com/c8e4d183c2.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    
+    <!--Testimonials------------------->
+    <div id="testimonials">
+  
+
+      <div class="testimonial-heading">
+        <h1>Feedbacks</h1>
+      </div>
+
+      <!--testimonials-box-container------>
+      <div class="testimonial-box-container">
+        <!--BOX-1-------------->
+        <div class="testimonial-box" *ngFor="let feedback of feedbacks">
+          <!--top------------------------->
+          <div class="box-top">
+            <!--profile----->
+            <div class="profile">
+              <!--img---->
+              <div class="profile-img"></div>
+              <!--name-and-username-->
+              <div class="name-user">
+                <strong>{{ feedback.name }}</strong>
+                <span>{{ feedback.email }}</span>
+              </div>
+              <div class="buttons">
+                <!-- <button class="c-featurette__button">Edit</button> -->
+                  <button type="button">
+                    <a (click)="onDeleteFeedback(feedback.feedback_id)">Delete</a>
+                  </button>
+            </div>
+            </div>
+            <!--reviews------>
+          </div>
+          <!--Comments---------------------------------------->
+          <div class="client-comment">
+            <p>
+              <br />
+            </p>
+
+            <hr />
+            {{ feedback.message }}
+          </div>
+        </div>
+        <!--BOX-2-------------->
+      </div>
+    </div>
+  </body>
+</html>

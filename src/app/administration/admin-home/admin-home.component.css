@@ -40,3 +40,7 @@
     width: 300px;
     height: 300px;
   }
+
+  span {
+    content: "\20B9";
+  }

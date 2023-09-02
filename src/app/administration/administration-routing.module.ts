@@ -12,6 +12,7 @@ import { TrekFilesComponent } from './trek-files/trek-files.component';
 import { CampFilesComponent } from './camp-files/camp-files.component';
 import { InternationalFilesComponent } from './international-files/international-files.component';
 import { NationalFilesComponent } from './national-files/national-files.component';
+import { AdminFeedbacksComponent } from './admin-feedbacks/admin-feedbacks.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'users',
     component: ViewUsersComponent,
+  },
+  {
+    path: 'feedbacks',
+    component: AdminFeedbacksComponent,
   },
   {
     path: 'collections',

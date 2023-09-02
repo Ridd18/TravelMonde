@@ -93,6 +93,12 @@ export class DestinationsService {
     return this.http.get<trekRating[]>(`${this.apiServerUrl}/trekRatings`);
   }
 
+  //payments
+  public sumOfTrekPayments(): Observable<any> {
+    return this.http.get<any>(`${this.apiServerUrl}/trekSumPayments`);
+  }
+
+
   //Campings
   public getCampings(): Observable<Camping[]> {
     return this.http.get<Camping[]>(`${this.apiServerUrl}/camping`);
@@ -157,6 +163,13 @@ export class DestinationsService {
       `${this.apiServerUrl}/campingRatings`
     );
   }
+
+  
+  //payments
+  public sumOfCampPayments(): Observable<any> {
+    return this.http.get<any>(`${this.apiServerUrl}/campingSumPayments`);
+  }
+
 
   //National Tours
 
@@ -232,6 +245,13 @@ export class DestinationsService {
       `${this.apiServerUrl}/nationalRatings`
     );
   }
+
+  
+  //payments
+  public sumOfNationalPayments(): Observable<any> {
+    return this.http.get<any>(`${this.apiServerUrl}/nationalTourSumPayments`);
+  }
+
 
   //InterNational Tours
 
@@ -317,6 +337,12 @@ export class DestinationsService {
       `${this.apiServerUrl}/internationalTourRatings`
     );
   }
+
+   //payments
+   public sumOfInternationalPayments(): Observable<any> {
+    return this.http.get<any>(`${this.apiServerUrl}/internationalTourSumPayments`);
+  }
+
 
   //FEEDBACK
 
