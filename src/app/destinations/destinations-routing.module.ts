@@ -13,6 +13,7 @@ import { NationalPaymentComponent } from './national-payment/national-payment.co
 import { InternationalPaymentComponent } from './international-payment/international-payment.component';
 import { CampingPaymentComponent } from './camping-payment/camping-payment.component';
 import { TrekPaymentComponent } from './trek-payment/trek-payment.component';
+import { AuthGuard } from '../auth.guard';
 
 const routes: Routes = [
   {
@@ -30,6 +31,7 @@ const routes: Routes = [
   {
     path: 'trekPayment/:id',
     component: TrekPaymentComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'camping',
@@ -42,6 +44,7 @@ const routes: Routes = [
   {
     path: 'campingPayment/:id',
     component: CampingPaymentComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'national',
@@ -54,6 +57,7 @@ const routes: Routes = [
   {
     path: 'nationalPayment/:id',
     component: NationalPaymentComponent,
+    canActivate:[AuthGuard]
   }
   ,
   {
@@ -67,6 +71,7 @@ const routes: Routes = [
   {
     path: 'internationalPayment/:id',
     component: InternationalPaymentComponent,
+    canActivate:[AuthGuard]
   }
 
 ];

@@ -61,5 +61,8 @@ export class AuthService {
     return this.http.get<any>(`${this.apiServerUrl}/user/count`);
   }
 
+  loggedIn() {
+    return !!localStorage.getItem('UserEmail')
+  }
 
 }

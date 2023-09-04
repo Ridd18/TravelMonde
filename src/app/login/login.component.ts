@@ -35,6 +35,7 @@ export class LoginComponent {
       this.authService.login(loginForm.value).subscribe(
         (res) => {
           console.log(res);
+          localStorage.setItem('UserEmail',this.email)
           this.router.navigate(['/']);
         },
         (err) => {

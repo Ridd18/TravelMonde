@@ -16,6 +16,7 @@ import { RegisterComponent } from './register/register.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PaymentsComponent } from './payments/payments.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { PaymentsComponent } from './payments/payments.component';
     BrowserAnimationsModule, 
     NgChartsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

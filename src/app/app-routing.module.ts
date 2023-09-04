@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { PaymentsComponent } from './payments/payments.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
       import('./administration/administration.module').then(
         (m) => m.AdministrationModule
       ),
+      canActivate:[AuthGuard]
   },
 
   {
