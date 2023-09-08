@@ -1,8 +1,5 @@
 import {
   HttpClient,
-  HttpEvent,
-  HttpRequest,
-  HttpResponse,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -70,9 +67,17 @@ export class DestinationsService {
     return this.http.get<trekFile>(`${this.apiServerUrl}/trek/fileById/${id}`);
   }
 
-  //add rating
+  //  add rating
+  // submitTrekRating(rating: number, id: number) {
+  //   return this.http.post(`${this.apiServerUrl}/trek/addrating`, {
+  //     rating,
+  //     id,
+  //   });
+  // }
+
+  //  add rating
   submitTrekRating(rating: number, id: number) {
-    return this.http.post(`${this.apiServerUrl}/trek/addrating`, {
+    return this.http.post(`${this.apiServerUrl}/addRatingTrek`, {
       rating,
       id,
     });
@@ -88,6 +93,12 @@ export class DestinationsService {
     return this.http.get<any>(`${this.apiServerUrl}/trekAVGratings`);
   }
 
+    //get successful trek with rating
+    getSuccessfulTrek(): Observable<any> {
+      return this.http.get<any>(`${this.apiServerUrl}/successfulTrek`);
+    }
+  
+
   //get all ratings
   public getAllTrekRatings(): Observable<trekRating[]> {
     return this.http.get<trekRating[]>(`${this.apiServerUrl}/trekRatings`);
@@ -97,7 +108,6 @@ export class DestinationsService {
   public sumOfTrekPayments(): Observable<any> {
     return this.http.get<any>(`${this.apiServerUrl}/trekSumPayments`);
   }
-
 
   //Campings
   public getCampings(): Observable<Camping[]> {
@@ -140,8 +150,16 @@ export class DestinationsService {
   }
 
   //add rating
+  // submitCampRating(rating: number, id: number) {
+  //   return this.http.post(`${this.apiServerUrl}/camping/addrating`, {
+  //     rating,
+  //     id,
+  //   });
+  // }
+
+  //add rating
   submitCampRating(rating: number, id: number) {
-    return this.http.post(`${this.apiServerUrl}/camping/addrating`, {
+    return this.http.post(`${this.apiServerUrl}/addRatingCamp`, {
       rating,
       id,
     });
@@ -164,12 +182,10 @@ export class DestinationsService {
     );
   }
 
-  
   //payments
   public sumOfCampPayments(): Observable<any> {
     return this.http.get<any>(`${this.apiServerUrl}/campingSumPayments`);
   }
-
 
   //National Tours
 
@@ -222,8 +238,16 @@ export class DestinationsService {
   }
 
   //add rating
+  // submitNationalRating(rating: number, id: number) {
+  //   return this.http.post(`${this.apiServerUrl}/nationalTour/addrating`, {
+  //     rating,
+  //     id,
+  //   });
+  // }
+
+  //add rating
   submitNationalRating(rating: number, id: number) {
-    return this.http.post(`${this.apiServerUrl}/nationalTour/addrating`, {
+    return this.http.post(`${this.apiServerUrl}/addRatingNational`, {
       rating,
       id,
     });
@@ -246,12 +270,10 @@ export class DestinationsService {
     );
   }
 
-  
   //payments
   public sumOfNationalPayments(): Observable<any> {
     return this.http.get<any>(`${this.apiServerUrl}/nationalTourSumPayments`);
   }
-
 
   //InterNational Tours
 
@@ -312,8 +334,16 @@ export class DestinationsService {
   }
 
   //add rating
+  // submitRating(rating: number, id: number) {
+  //   return this.http.post(`${this.apiServerUrl}/internationalTour/addrating`, {
+  //     rating,
+  //     id,
+  //   });
+  // }
+
+  //add rating
   submitRating(rating: number, id: number) {
-    return this.http.post(`${this.apiServerUrl}/internationalTour/addrating`, {
+    return this.http.post(`${this.apiServerUrl}/addRatingInternational`, {
       rating,
       id,
     });
@@ -328,7 +358,9 @@ export class DestinationsService {
 
   //get all avg rating
   getInternationalAverageRatings(): Observable<any> {
-    return this.http.get<any>(`${this.apiServerUrl}/internationalTourAVGratings`);
+    return this.http.get<any>(
+      `${this.apiServerUrl}/internationalTourAVGratings`
+    );
   }
 
   //get all ratings
@@ -338,11 +370,12 @@ export class DestinationsService {
     );
   }
 
-   //payments
-   public sumOfInternationalPayments(): Observable<any> {
-    return this.http.get<any>(`${this.apiServerUrl}/internationalTourSumPayments`);
+  //payments
+  public sumOfInternationalPayments(): Observable<any> {
+    return this.http.get<any>(
+      `${this.apiServerUrl}/internationalTourSumPayments`
+    );
   }
-
 
   //FEEDBACK
 

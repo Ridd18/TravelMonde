@@ -1,0 +1,97 @@
+<!-- Header -->
+<header class="bg-surface-primary border-bottom pt-6">
+  <div class="container-fluid">
+    <div class="mb-npx">
+      <div class="row align-items-center">
+        <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+          <!-- Title -->
+          <h1 class="h2 mb-0 ls-tight">Travel Monde</h1>
+        </div>
+        <br />
+        <br />
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="card shadow border-0 mb-7">
+  <div class="card-header">
+    <h3 class="mb-0">Analytics</h3>
+  </div>
+  <div class="card-header">
+    <h5 class="mb-0">Average Ratings Pie Chart</h5>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-container-trek">
+      <div>
+        <canvas
+          baseChart
+          [datasets]="pieChartData"
+          [labels]="pieChartLabels"
+          [type]="pieChartType"
+          [legend]="pieChartLegend"
+        >
+        </canvas>
+      </div>
+    </div>
+    <div class="chart-container-camp">
+      <div>
+        <canvas
+          baseChart
+          [datasets]="pieChartDataCamp"
+          [labels]="pieChartLabelsCamp"
+          [type]="pieChartTypeCamp"
+          [legend]="pieChartLegendCamp"
+        >
+        </canvas>
+      </div>
+    </div>
+    <div class="chart-container-national">
+      <div>
+        <canvas
+          baseChart
+          [datasets]="pieChartDataNational"
+          [labels]="pieChartLabelsNational"
+          [type]="pieChartTypeNational"
+          [legend]="pieChartLegendNational"
+        >
+        </canvas>
+      </div>
+    </div>
+    <div class="chart-container-international">
+      <div>
+        <canvas
+          baseChart
+          [datasets]="pieChartDataInternational"
+          [labels]="pieChartLabelsInternational"
+          [type]="pieChartTypeInternational"
+          [legend]="pieChartLegendInternational"
+        >
+        </canvas>
+      </div>
+    </div>
+  </div>
+  <div class="bar-container">
+    <div class="bar-container-trek">
+      
+        <canvas 
+          baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [type]="barChartType"
+        ></canvas>
+ 
+    
+  </div>
+</div>
+
+    <div class="chart-containerr">
+        <canvas
+        baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [type]="barChartType"
+      ></canvas>
+    </div>
+

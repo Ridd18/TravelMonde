@@ -20,6 +20,7 @@ import { CampFilesComponent } from './camp-files/camp-files.component';
 import { InternationalFilesComponent } from './international-files/international-files.component';
 import { NationalFilesComponent } from './national-files/national-files.component';
 import { AdminFeedbacksComponent } from './admin-feedbacks/admin-feedbacks.component';
+import { AnalyticsComponent } from './analytics/analytics.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AdminFeedbacksComponent } from './admin-feedbacks/admin-feedbacks.compo
     InternationalFilesComponent,
     NationalFilesComponent,
     AdminFeedbacksComponent,
+    AnalyticsComponent,
   ],
   imports: [
     CommonModule,

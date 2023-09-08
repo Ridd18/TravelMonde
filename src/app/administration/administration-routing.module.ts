@@ -13,6 +13,7 @@ import { CampFilesComponent } from './camp-files/camp-files.component';
 import { InternationalFilesComponent } from './international-files/international-files.component';
 import { NationalFilesComponent } from './national-files/national-files.component';
 import { AdminFeedbacksComponent } from './admin-feedbacks/admin-feedbacks.component';
+import { AnalyticsComponent } from './analytics/analytics.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'users',
     component: ViewUsersComponent,
+  },
+  {
+    path: 'analytics',
+    component: AnalyticsComponent,
   },
   {
     path: 'feedbacks',

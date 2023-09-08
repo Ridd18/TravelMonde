@@ -160,6 +160,7 @@ export class ViewInternationalComponent {
     this.service.submitRating(rating, this.idForRating).subscribe(
       (response) => {
         console.log(response);
+        alert("Rating submitted successfully")
         // Handle successful submission, e.g., show a success message
         console.log('Rating submitted successfully');
       },

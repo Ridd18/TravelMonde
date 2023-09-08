@@ -99,7 +99,8 @@ export class AdminHomeComponent implements OnInit {
         this.trekRatings = response;
 
         // const ratings = response.map((item) => parseFloat(item.avg));
-        const labels = response.map((item) => `Trek ${item.trek_id}`);
+        // const labels = response.map((item) => `Trek ${item.trek_id}`);
+        const labels = response.map((item) => ` ${item.trek_name}`);
 
         const chartData = {
           data: response.map((item) => parseFloat(item.avg)),
@@ -126,7 +127,7 @@ export class AdminHomeComponent implements OnInit {
         this.campRatings = response;
 
         // const ratings = response.map((item) => parseFloat(item.avg));
-        const labels = response.map((item) => `Camp ${item.camping_id}`);
+        const labels = response.map((item) => ` ${item.camping_name}`);
 
         const chartData = {
           data: response.map((item) => parseFloat(item.avg)),
@@ -154,7 +155,7 @@ export class AdminHomeComponent implements OnInit {
 
         // const ratings = response.map((item) => parseFloat(item.avg));
         const labels = response.map(
-          (item) => `National Tour ${item.national_id}`
+          (item) => ` ${item.national_name}`
         );
 
         const chartData = {
@@ -182,7 +183,7 @@ export class AdminHomeComponent implements OnInit {
         this.internationalRatings = response;
 
         // const ratings = response.map((item) => parseFloat(item.avg));
-        const labels = response.map((item) => `Trek ${item.international_id}`);
+        const labels = response.map((item) => ` ${item.international_name}`);
 
         const chartData = {
           data: response.map((item) => parseFloat(item.avg)),

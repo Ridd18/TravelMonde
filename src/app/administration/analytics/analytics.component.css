@@ -1,0 +1,77 @@
+/* Webpixels CSS */
+/* Utility and component-centric Design System based on Bootstrap for fast, responsive UI development */
+/* URL: https://github.com/webpixels/css */
+
+@import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+
+/* Bootstrap Icons */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+
+.container, .container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
+    margin-bottom: 20px;
+    width: 100%;
+    padding-right: var(--x-gutter-x, 1.5rem);
+    padding-left: var(--x-gutter-x, 1.5rem);
+    margin-right: auto;
+    margin-left: auto;
+
+
+}
+
+.chart-container {
+    display: flex;
+   }
+ 
+ .chart-container-trek {
+     width: 350px;
+     height: 350px;
+   }
+ 
+   .chart-container-camp {
+     width: 350px;
+     height: 350px;
+   }
+ 
+   .chart-container-national {
+     width: 350px;
+     height: 350px;
+   }
+   .chart-container-international {
+     width: 350px;
+     height: 350px;
+   }
+
+
+   .bar-container {
+    display: flex;
+   }
+
+   
+   .bar-container-1 {
+    display: flex;
+   }
+
+   .bar-container-trek-1 {
+    width: 350px;
+    height: 350px;
+  }
+   .bar-container-trek {
+    width: 350px;
+    height: 350px;
+  }
+
+  .trek-barChart {
+    width: 400px; /* Set your desired width */
+    height: 300px;
+  }
+
+
+
+  .chart-containerr {
+    width: 400px; /* Set your desired width */
+    height: 400px; /* Set your desired height */
+  }
+ 
+   span {
+     content: "\20B9";
+   }
