@@ -72,26 +72,53 @@
       </div>
     </div>
   </div>
+  <br>
+  <br>
+
+  <div class="card-header">
+    <h5 class="mb-0">Most Popular Tours</h5>
+  </div>
   <div class="bar-container">
     <div class="bar-container-trek">
-      
-        <canvas 
+      <div>
+        <canvas
           baseChart
           [datasets]="barChartData"
           [labels]="barChartLabels"
           [type]="barChartType"
         ></canvas>
- 
-    
+      </div>
+    </div>
+    <div class="bar-container-camp">
+      <div>
+        <canvas
+          baseChart
+          [datasets]="barChartDataCamp"
+          [labels]="barChartLabelsCamp"
+          [type]="barChartTypeCamp"
+        ></canvas>
+      </div>
+    </div>
+    <div class="bar-container-national">
+      <div>
+        <canvas
+          baseChart
+          [datasets]="barChartDataNational"
+          [labels]="barChartLabelsNational"
+          [type]="barChartTypeNational"
+        ></canvas>
+      </div>
+    </div>
+    <div class="bar-container-international">
+      <div>
+        <canvas
+          baseChart
+          [datasets]="barChartDataInternational"
+          [labels]="barChartLabelsInternational"
+          [type]="barChartTypeInternational"
+        ></canvas>
+      </div>
+    </div>
   </div>
 </div>
-
-    <div class="chart-containerr">
-        <canvas
-        baseChart
-        [datasets]="barChartData"
-        [labels]="barChartLabels"
-        [type]="barChartType"
-      ></canvas>
-    </div>
 

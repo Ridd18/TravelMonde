@@ -159,57 +159,116 @@
         </div>
         <div class="card shadow border-0 mb-7">
           <div class="card-header">
-            <h5 class="mb-0">Analytics</h5>
+            <h3 class="mb-0">Payments</h3>
           </div>
-          <div class="chart-container">
-            <div class="chart-container-trek">
-              <div>
-                <canvas
-                  baseChart
-                  [datasets]="pieChartData"
-                  [labels]="pieChartLabels"
-                  [type]="pieChartType"
-                  [legend]="pieChartLegend"
-                >
-                </canvas>
-              </div>
-            </div>
-            <div class="chart-container-camp">
-              <div>
-                <canvas
-                  baseChart
-                  [datasets]="pieChartDataCamp"
-                  [labels]="pieChartLabelsCamp"
-                  [type]="pieChartTypeCamp"
-                  [legend]="pieChartLegendCamp"
-                >
-                </canvas>
-              </div>
-            </div>
-            <div class="chart-container-national">
-              <div>
-                <canvas
-                  baseChart
-                  [datasets]="pieChartDataNational"
-                  [labels]="pieChartLabelsNational"
-                  [type]="pieChartTypeNational"
-                  [legend]="pieChartLegendNational"
-                >
-                </canvas>
-              </div>
-            </div>
-            <div class="chart-container-international">
-              <div>
-                <canvas
-                  baseChart
-                  [datasets]="pieChartDataInternational"
-                  [labels]="pieChartLabelsInternational"
-                  [type]="pieChartTypeInternational"
-                  [legend]="pieChartLegendInternational"
-                >
-                </canvas>
-              </div>
-            </div>
+          <div class="card-header">
+            <h5 class="mb-0">Trek Payments</h5>
+          </div>
+
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+          />
+          <div class="products">
+            <table class="table is-striped is-bordered mt-2 is-fullwidth">
+              <thead>
+                <tr>
+                  <th>Tour Name</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let trekPayment of trekPayments">
+                  <td>{{ trekPayment.file_name }}</td>
+
+                  <td>
+                    {{ trekPayment.amount }}
+                  </td>
+                  <td>
+                    {{ trekPayment.payment_date }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-header">
+            <h5 class="mb-0">Camp Payments</h5>
+          </div>
+          <div class="products">
+            <table class="table is-striped is-bordered mt-2 is-fullwidth">
+              <thead>
+                <tr>
+                  <th>Tour Name</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let campPayment of campPayments">
+                  <td>{{ campPayment.file_name }}</td>
+
+                  <td>
+                    {{ campPayment.amount }}
+                  </td>
+                  <td>
+                    {{ campPayment.payment_date }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-header">
+            <h5 class="mb-0">National Tours Payments</h5>
+          </div>
+          <div class="products">
+            <table class="table is-striped is-bordered mt-2 is-fullwidth">
+              <thead>
+                <tr>
+                  <th>Tour Name</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let nationalPayment of nationalPayments">
+                  <td>{{ nationalPayment.file_name }}</td>
+
+                  <td>
+                    {{ nationalPayment.amount }}
+                  </td>
+                  <td>
+                    {{ nationalPayment.payment_date }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-header">
+            <h5 class="mb-0">International Tours Payments</h5>
+          </div>
+          <div class="products">
+            <table class="table is-striped is-bordered mt-2 is-fullwidth">
+              <thead>
+                <tr>
+                  <th>Tour Name</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let internationalPayment of internationalPayments">
+                  <td>{{ internationalPayment.file_name }}</td>
+
+                  <td>
+                    {{ internationalPayment.amount }}
+                  </td>
+                  <td>
+                    {{ internationalPayment.payment_date }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

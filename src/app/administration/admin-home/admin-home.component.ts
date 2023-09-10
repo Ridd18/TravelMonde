@@ -7,6 +7,11 @@ import { trekRating } from 'src/app/models/trekRatingModel';
 import { campingRating } from 'src/app/models/campingRatingModel';
 import { nationalRating } from 'src/app/models/nationalRatingModel';
 import { internationalRating } from 'src/app/models/internationalRatingModel';
+import { trekPayment } from 'src/app/models/trekPayments';
+import { campPayment } from 'src/app/models/campPayments';
+import { nationalPayment } from 'src/app/models/nationalPayments';
+import { internationalPayment } from 'src/app/models/internationalPayments';
+
 
 @Component({
   selector: 'app-admin-home',
@@ -42,6 +47,11 @@ export class AdminHomeComponent implements OnInit {
   totalPayment: any;
   finalTotalPayment: any;
 
+  trekPayments: trekPayment[];
+  campPayments: campPayment[];
+  nationalPayments: nationalPayment[];
+  internationalPayments: internationalPayment[];
+
   public trekRatings: trekRating[];
   public campRatings: campingRating[];
   public nationalRatings: nationalRating[];
@@ -49,7 +59,7 @@ export class AdminHomeComponent implements OnInit {
 
   constructor(
     private service: DestinationsService,
-    private userService: AuthService
+    private userService: AuthService,
   ) {}
 
   ngOnInit() {
@@ -71,6 +81,11 @@ export class AdminHomeComponent implements OnInit {
     this.getCampingsPayment();
     this.getNationalPayment();
     this.getInternationalPayment();
+
+    this.getTrekPayments()
+    this.getCampPayments()
+    this.getNationalPayments()
+    this.getInternationalPayments()
   }
 
   public pieChartType: ChartType = 'pie';
@@ -154,9 +169,7 @@ export class AdminHomeComponent implements OnInit {
         this.nationalRatings = response;
 
         // const ratings = response.map((item) => parseFloat(item.avg));
-        const labels = response.map(
-          (item) => ` ${item.national_name}`
-        );
+        const labels = response.map((item) => ` ${item.national_name}`);
 
         const chartData = {
           data: response.map((item) => parseFloat(item.avg)),
@@ -320,7 +333,7 @@ export class AdminHomeComponent implements OnInit {
       (response: any) => {
         console.log(response);
         this.TrekPayment = response;
-        this.finalTrekPayment = (this.TrekPayment[0].TrekSum);
+        this.finalTrekPayment = this.TrekPayment[0].TrekSum;
 
         console.log(this.finalTrekPayment);
 
@@ -339,7 +352,7 @@ export class AdminHomeComponent implements OnInit {
       (response: any) => {
         console.log(response);
         this.CampingPayment = response;
-        this.finalCampingPayment = (this.CampingPayment[0].CampingSum);
+        this.finalCampingPayment = this.CampingPayment[0].CampingSum;
 
         console.log(this.finalCampingPayment);
 
@@ -359,7 +372,7 @@ export class AdminHomeComponent implements OnInit {
       (response: any) => {
         console.log(response);
         this.NationalPayment = response;
-        this.finalNationalPayment = (this.NationalPayment[0].NationalSum);
+        this.finalNationalPayment = this.NationalPayment[0].NationalSum;
 
         console.log(this.finalNationalPayment);
 
@@ -378,9 +391,8 @@ export class AdminHomeComponent implements OnInit {
       (response: any) => {
         console.log(response);
         this.InternationalPayment = response;
-        this.finalInternationalPayment = (
-          this.InternationalPayment[0].InternationalSum
-        );
+        this.finalInternationalPayment =
+          this.InternationalPayment[0].InternationalSum;
 
         console.log(this.finalInternationalPayment);
 
@@ -391,6 +403,53 @@ export class AdminHomeComponent implements OnInit {
 
         console.log('final total payment of all tours', this.finalTotalPayment);
         console.log(' total payment of all tours', this.totalPayment);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public getTrekPayments(): void {
+    this.service.getAllTrekPayments().subscribe(
+      (response: trekPayment[]) => {
+        this.trekPayments = response;
+        console.log(this.trekPayments)
+
+       
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+  public getCampPayments(): void {
+    this.service.getAllCampPayments().subscribe(
+      (response: campPayment[]) => {
+        this.campPayments = response;
+        console.log(this.campPayments)
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+  public getNationalPayments(): void {
+    this.service.getAllNationalPayments().subscribe(
+      (response: nationalPayment[]) => {
+        this.nationalPayments = response;
+        console.log(this.nationalPayments)
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+  public getInternationalPayments(): void {
+    this.service.getAllInternationalPayments().subscribe(
+      (response: internationalPayment[]) => {
+        this.internationalPayments = response;
+        console.log(this.internationalPayments)
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

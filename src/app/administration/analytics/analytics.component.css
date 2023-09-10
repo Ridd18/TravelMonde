@@ -60,6 +60,23 @@
     height: 350px;
   }
 
+  .bar-container-camp {
+    width: 350px;
+    height: 350px;
+  }
+
+
+  .bar-container-national {
+    width: 350px;
+    height: 350px;
+  }
+
+
+  .bar-container-international {
+    width: 350px;
+    height: 350px;
+  }
+
   .trek-barChart {
     width: 400px; /* Set your desired width */
     height: 300px;
@@ -67,11 +84,9 @@
 
 
 
-  .chart-containerr {
-    width: 400px; /* Set your desired width */
-    height: 400px; /* Set your desired height */
-  }
  
    span {
      content: "\20B9";
    }
+
+

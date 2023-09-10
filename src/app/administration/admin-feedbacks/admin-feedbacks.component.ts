@@ -20,7 +20,6 @@ export class AdminFeedbacksComponent {
 
   constructor(
     private service: DestinationsService,
-    private route:ActivatedRoute
     
   ) {}
 

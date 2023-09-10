@@ -20,6 +20,10 @@ import { trekRating } from '../models/trekRatingModel';
 import { campingRating } from '../models/campingRatingModel';
 import { nationalRating } from '../models/nationalRatingModel';
 import { Feedback } from '../models/feedbackModel';
+import { trekPayment } from '../models/trekPayments';
+import { campPayment } from '../models/campPayments';
+import { nationalPayment } from '../models/nationalPayments';
+import { internationalPayment } from '../models/internationalPayments';
 
 @Injectable({
   providedIn: 'root',
@@ -105,9 +109,17 @@ export class DestinationsService {
   }
 
   //payments
+
+
   public sumOfTrekPayments(): Observable<any> {
     return this.http.get<any>(`${this.apiServerUrl}/trekSumPayments`);
   }
+
+  //get all payments
+  public getAllTrekPayments(): Observable<trekPayment[]> {
+    return this.http.get<trekPayment[]>(`${this.apiServerUrl}/trekPayments`);
+  }
+
 
   //Campings
   public getCampings(): Observable<Camping[]> {
@@ -185,6 +197,14 @@ export class DestinationsService {
   //payments
   public sumOfCampPayments(): Observable<any> {
     return this.http.get<any>(`${this.apiServerUrl}/campingSumPayments`);
+
+    
+  }
+
+  
+  //get all payments
+  public getAllCampPayments(): Observable<campPayment[]> {
+    return this.http.get<campPayment[]>(`${this.apiServerUrl}/campingPayments`);
   }
 
   //National Tours
@@ -273,6 +293,12 @@ export class DestinationsService {
   //payments
   public sumOfNationalPayments(): Observable<any> {
     return this.http.get<any>(`${this.apiServerUrl}/nationalTourSumPayments`);
+  }
+
+  
+  //get all payments
+  public getAllNationalPayments(): Observable<nationalPayment[]> {
+    return this.http.get<nationalPayment[]>(`${this.apiServerUrl}/nationalTourPayments`);
   }
 
   //InterNational Tours
@@ -375,6 +401,12 @@ export class DestinationsService {
     return this.http.get<any>(
       `${this.apiServerUrl}/internationalTourSumPayments`
     );
+  }
+
+  
+  //get all payments
+  public getAllInternationalPayments(): Observable<internationalPayment[]> {
+    return this.http.get<internationalPayment[]>(`${this.apiServerUrl}/internationalTourPayments`);
   }
 
   //FEEDBACK

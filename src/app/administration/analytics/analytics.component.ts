@@ -29,7 +29,6 @@ export class AnalyticsComponent implements OnInit {
     this.getAllNationalRatings();
     this.getAllInternationalRatings();
 
-
     this.getSuccessfulTrekWithRating();
   }
 
@@ -63,21 +62,38 @@ export class AnalyticsComponent implements OnInit {
   public barChartLabels: string[] = [];
   public barChartData: any[] = [];
   public barChartLegend: boolean = true;
+  public barChartOptions1 : any[] = []
+
 
   public pieChartType: ChartType = 'pie';
   public pieChartLabels: string[] = [];
   public pieChartData: any[] = [];
   public pieChartLegend: boolean = true;
 
+  public barChartTypeCamp: ChartType = 'bar';
+  public barChartLabelsCamp: string[] = [];
+  public barChartDataCamp: any[] = [];
+  public barChartLegendCamp: boolean = true;
+
   public pieChartTypeCamp: ChartType = 'pie';
   public pieChartLabelsCamp: string[] = [];
   public pieChartDataCamp: any[] = [];
   public pieChartLegendCamp: boolean = true;
 
+  public barChartTypeNational: ChartType = 'bar';
+  public barChartLabelsNational: string[] = [];
+  public barChartDataNational: any[] = [];
+  public barChartLegendNational: boolean = true;
+
   public pieChartTypeNational: ChartType = 'pie';
   public pieChartLabelsNational: string[] = [];
   public pieChartDataNational: any[] = [];
   public pieChartLegendNational: boolean = true;
+
+  public barChartTypeInternational: ChartType = 'bar';
+  public barChartLabelsInternational: string[] = [];
+  public barChartDataInternational: any[] = [];
+  public barChartLegendInternational: boolean = true;
 
   public pieChartTypeInternational: ChartType = 'pie';
   public pieChartLabelsInternational: string[] = [];
@@ -92,6 +108,7 @@ export class AnalyticsComponent implements OnInit {
         // const ratings = response.map((item) => parseFloat(item.avg));
         // const labels = response.map((item) => `Trek ${item.trek_id}`);
         const labels = response.map((item) => ` ${item.trek_name}`);
+
 
         const chartData = {
           data: response.map((item) => parseFloat(item.avg)),
@@ -114,12 +131,10 @@ export class AnalyticsComponent implements OnInit {
           options: {
             scales: {
               y: {
-                
                 beginAtZero: true,
                 ticks: {
                   suggestedMax: 5,
-                }
-               
+                },
               },
             },
           },
@@ -132,6 +147,8 @@ export class AnalyticsComponent implements OnInit {
         this.barChartData = [chartData];
 
         this.barChartLabels = labels;
+
+      
 
         console.log(this.pieChartLabels);
         console.log(this.pieChartData);
@@ -146,7 +163,6 @@ export class AnalyticsComponent implements OnInit {
     );
   }
 
-
   public getAllCampRatings(): void {
     this.service.getCampingAverageRatings().subscribe(
       (response: any[]) => {
@@ -157,11 +173,30 @@ export class AnalyticsComponent implements OnInit {
 
         const chartData = {
           data: response.map((item) => parseFloat(item.avg)),
+          label: 'Camps',
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(255, 206, 86, 0.6)',
+            'rgba(75, 192, 192, 0.6)',
+            'rgba(153, 102, 255, 0.6)',
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+          ],
+          borderWidth: 1,
         };
         this.pieChartDataCamp = [chartData];
 
         this.pieChartLabelsCamp = labels;
-        // this.pieChartData = ratings;
+
+        this.barChartDataCamp = [chartData];
+
+        this.barChartLabelsCamp = labels;
 
         console.log(this.pieChartLabelsCamp);
         console.log(this.pieChartDataCamp);
@@ -184,10 +219,40 @@ export class AnalyticsComponent implements OnInit {
 
         const chartData = {
           data: response.map((item) => parseFloat(item.avg)),
+          label: 'National Tours',
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(255, 206, 86, 0.6)',
+            'rgba(75, 192, 192, 0.6)',
+            'rgba(153, 102, 255, 0.6)',
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+          ],
+          borderWidth: 1,
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  suggestedMax: 5,
+                },
+              },
+            },
+          },
         };
         this.pieChartDataNational = [chartData];
 
         this.pieChartLabelsNational = labels;
+
+        this.barChartDataNational = [chartData];
+
+        this.barChartLabelsNational = labels;
         // this.pieChartData = ratings;
 
         console.log(this.pieChartLabelsNational);
@@ -211,11 +276,40 @@ export class AnalyticsComponent implements OnInit {
 
         const chartData = {
           data: response.map((item) => parseFloat(item.avg)),
+          label: 'International Tours',
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(255, 206, 86, 0.6)',
+            'rgba(75, 192, 192, 0.6)',
+            'rgba(153, 102, 255, 0.6)',
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+          ],
+          borderWidth: 1,
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  suggestedMax: 5,
+                },
+              },
+            },
+          },
         };
         this.pieChartDataInternational = [chartData];
 
         this.pieChartLabelsInternational = labels;
-        // this.pieChartData = ratings;
+
+        this.barChartDataInternational = [chartData];
+
+        this.barChartLabelsInternational = labels;
 
         console.log(this.pieChartLabelsInternational);
         console.log(this.pieChartDataInternational);
