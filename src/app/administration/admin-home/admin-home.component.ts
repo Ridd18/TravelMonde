@@ -11,6 +11,8 @@ import { trekPayment } from 'src/app/models/trekPayments';
 import { campPayment } from 'src/app/models/campPayments';
 import { nationalPayment } from 'src/app/models/nationalPayments';
 import { internationalPayment } from 'src/app/models/internationalPayments';
+import { DatePipe } from '@angular/common';
+
 
 
 @Component({
@@ -60,6 +62,7 @@ export class AdminHomeComponent implements OnInit {
   constructor(
     private service: DestinationsService,
     private userService: AuthService,
+    private datePipe: DatePipe
   ) {}
 
   ngOnInit() {
@@ -416,6 +419,8 @@ export class AdminHomeComponent implements OnInit {
         this.trekPayments = response;
         console.log(this.trekPayments)
 
+ 
+        // const formattedDate = this.datePipe.transform(dateFromDatabase, 'dd/MM/yyyy', 'UTC', ISTTimeZone);
        
       },
       (error: HttpErrorResponse) => {
@@ -423,6 +428,13 @@ export class AdminHomeComponent implements OnInit {
       }
     );
   }
+
+  formatDate(dateString: string) {
+    const formattedDate = this.datePipe.transform(dateString, 'dd/MM/yyyy');
+    return formattedDate || ''; // Handle null or invalid dates
+  }
+
+  
   public getCampPayments(): void {
     this.service.getAllCampPayments().subscribe(
       (response: campPayment[]) => {

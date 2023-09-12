@@ -3,5 +3,5 @@ export interface trekPayment{
     file_name: string;
     amount: number;  
     trek_id: number;
-    payment_date: Date;
+    payment_date: string;
 }  

@@ -115,9 +115,9 @@ export class TrekPaymentComponent implements OnInit {
 
         this.finalAmount = parseInt(this.paymentAmount3);
 
-        this.amountInPaisa = this.finalAmount*100;
+        this.amountInPaisa = this.finalAmount * 100;
 
-         console.log(this.amountInPaisa);
+        console.log(this.amountInPaisa);
 
         console.log('payment amount is', this.finalAmount);
       },

@@ -3,5 +3,5 @@ export interface internationalPayment{
     file_name: string;
     amount: number;  
     international_id: number;
-    payment_date: Date;
+    payment_date: string;
 }  

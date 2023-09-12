@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NgChartsModule } from 'ng2-charts';
 
 import { AdministrationRoutingModule } from './administration-routing.module';
@@ -47,6 +47,10 @@ import { AnalyticsComponent } from './analytics/analytics.component';
     SharedModule,
     FormsModule,
     NgChartsModule
+  ],
+  providers: [
+    DatePipe, // Ensure DatePipe is added here
+    // Other services and providers
   ],
 })
 export class AdministrationModule {}

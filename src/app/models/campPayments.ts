@@ -3,5 +3,5 @@ export interface campPayment{
     file_name: string;
     amount: number;  
     camp_id: number;
-    payment_date: Date;
+    payment_date: string;
 }  

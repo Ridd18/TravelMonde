@@ -165,17 +165,13 @@
             <h5 class="mb-0">Trek Payments</h5>
           </div>
 
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-          />
           <div class="products">
             <table class="table is-striped is-bordered mt-2 is-fullwidth">
               <thead>
                 <tr>
-                  <th>Tour Name</th>
-                  <th>Amount</th>
-                  <th>Date</th>
+                  <th class="has-text-centered">Tour Name</th>
+                  <th class="has-text-centered">Amount</th>
+                  <th class="has-text-centered">Date</th>
                 </tr>
               </thead>
               <tbody>
@@ -186,7 +182,7 @@
                     {{ trekPayment.amount }}
                   </td>
                   <td>
-                    {{ trekPayment.payment_date }}
+                    {{ formatDate(trekPayment.payment_date) }}
                   </td>
                 </tr>
               </tbody>
@@ -199,9 +195,9 @@
             <table class="table is-striped is-bordered mt-2 is-fullwidth">
               <thead>
                 <tr>
-                  <th>Tour Name</th>
-                  <th>Amount</th>
-                  <th>Date</th>
+                  <th class="has-text-centered">Tour Name</th>
+                  <th class="has-text-centered">Amount</th>
+                  <th class="has-text-centered">Date</th>
                 </tr>
               </thead>
               <tbody>
@@ -212,7 +208,7 @@
                     {{ campPayment.amount }}
                   </td>
                   <td>
-                    {{ campPayment.payment_date }}
+                    {{ formatDate(campPayment.payment_date) }}
                   </td>
                 </tr>
               </tbody>
@@ -238,7 +234,7 @@
                     {{ nationalPayment.amount }}
                   </td>
                   <td>
-                    {{ nationalPayment.payment_date }}
+                    {{ formatDate(nationalPayment.payment_date) }}
                   </td>
                 </tr>
               </tbody>
@@ -264,7 +260,7 @@
                     {{ internationalPayment.amount }}
                   </td>
                   <td>
-                    {{ internationalPayment.payment_date }}
+                    {{ formatDate(internationalPayment.payment_date) }}
                   </td>
                 </tr>
               </tbody>
@@ -275,5 +271,4 @@
     </main>
   </div>
 </div>
-<!-- 
-<router-outlet></router-outlet> -->
+
