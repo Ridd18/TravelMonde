@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { SharedRoutingModule } from './shared-routing.module';
 import { DestinationsNavComponent } from '../destinations/destinations-nav/destinations-nav.component';
 import { DestinationsHomeComponent } from '../destinations/destinations-home/destinations-home.component';
+import { DestinationFooterComponent } from '../destinations/destination-footer/destination-footer.component';
 
 
 @NgModule({
   declarations: [
     DestinationsNavComponent,
-    DestinationsHomeComponent
+    DestinationsHomeComponent,
+    DestinationFooterComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { DestinationsHomeComponent } from '../destinations/destinations-home/des
   ],
   exports:[
     DestinationsNavComponent,
-    DestinationsHomeComponent
+    DestinationsHomeComponent,
+    DestinationFooterComponent
   ]
 })
 export class SharedModule { }

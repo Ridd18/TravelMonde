@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
 
   public registerUser(registerForm: NgForm)
   {
+    // registerForm.value['phone'] = [0~9,10] 
     
     this.authService.singup(registerForm.value)
     .subscribe(

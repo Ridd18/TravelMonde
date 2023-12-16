@@ -35,7 +35,8 @@ import { TrekPaymentComponent } from './trek-payment/trek-payment.component';
     NationalPaymentComponent,
     InternationalPaymentComponent,
     CampingPaymentComponent,
-    TrekPaymentComponent
+    TrekPaymentComponent,
+    // DestinationFooterComponent
   ],
   imports: [
     CommonModule,

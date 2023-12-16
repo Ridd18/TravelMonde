@@ -141,16 +141,21 @@ img {
 }
 .purchase-info {
   margin: 1.5rem 0;
+  display: flex;
 }
 .purchase-info input,
 .purchase-info .btn {
-  border: 1.5px solid #ddd;
-  border-radius: 25px;
-  text-align: center;
-  padding: 0.45rem 0.8rem;
-  outline: 0;
-  margin-right: 0.2rem;
-  margin-bottom: 1rem;
+  padding: 0.8rem 2.4rem;
+  border-radius: 0.8rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+  transition: all 0.3s ease-in-out;
 }
 .purchase-info input {
   width: 60px;
@@ -160,10 +165,10 @@ img {
   color: #fff;
 }
 .purchase-info .btn:first-of-type {
-  background: #09ded3;
+  background: #fb8f1d;
 }
 .purchase-info .btn:last-of-type {
-  background: #09ded3;
+  background :#fb8f1d;
 }
 .purchase-info .btn:hover {
   opacity: 0.9;
@@ -199,7 +204,7 @@ img {
     grid-gap: 1.5rem;
   }
   .card-wrapper {
-    height: 100vh;
+    height: 120vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -228,7 +233,6 @@ img {
 }
 
 
-
 .products {
   display: flex;
   margin-top: 100px;
@@ -251,8 +255,15 @@ textarea {
   line-height: inherit;
 }
 
+
 .star {
   font-size: 40px;
   cursor:pointer;
-  color: #81b3de
+  color: #fb8f1d;
 } 
+
+
+.downloadLink {
+  cursor:pointer;
+  color: #fb8f1d;
+}

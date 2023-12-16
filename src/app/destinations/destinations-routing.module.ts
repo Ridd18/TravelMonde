@@ -14,11 +14,16 @@ import { InternationalPaymentComponent } from './international-payment/internati
 import { CampingPaymentComponent } from './camping-payment/camping-payment.component';
 import { TrekPaymentComponent } from './trek-payment/trek-payment.component';
 import { AuthGuard } from '../auth.guard';
+import { DestinationFooterComponent } from './destination-footer/destination-footer.component';
 
 const routes: Routes = [
   {
     path: '',
     component: DestinationsHomeComponent,
+  },
+  {
+    path: 'footer',
+    component: DestinationFooterComponent,
   },
   {
     path: 'treks',

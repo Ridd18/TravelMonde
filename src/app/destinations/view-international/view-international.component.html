@@ -15,6 +15,7 @@
   id="id"
   placeholder="ID"
 />
+<app-destinations-nav></app-destinations-nav>
 
 <!DOCTYPE html>
 
@@ -60,11 +61,11 @@
         >
         <b
           ><p class="product-file-name">
-            {{ internationalTour?.name }}: &nbsp;
+            {{ internationalTour?.name }} Itinerary: &nbsp; 
             <!-- {{ internationalTourFile?.file_name }}: &nbsp; -->
 
-            <a (click)="downloadFile(internationalTourFile.file_name)"
-              >download</a
+            <a class="downloadLink" (click)="downloadFile(internationalTourFile.file_name)"
+              >Download</a
             >
           </p></b
         >
@@ -100,3 +101,5 @@
     </div>
   </div>
 </div>
+
+<app-destination-footer></app-destination-footer>

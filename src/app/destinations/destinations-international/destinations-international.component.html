@@ -6,7 +6,7 @@
     <li class="c-featurette__item" *ngFor="let internationalTour of internationalTours">
       <img
         class="c-featurette__background"
-        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/911489/nicolas-j-leclercq-785256-unsplash.jpg"
+        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/911489/jonathan-gallegos-727409-unsplash.jpg"
       /><small class="c-featurette__category">{{ internationalTour?.price }}</small>
       <h2 class="c-featurette__heading">{{ internationalTour?.name }}</h2>
       <a  [routerLink]="['/destinations/international/', internationalTour.international_id]" routerLinkActive="active"
@@ -14,3 +14,5 @@
     </li>
   </ul>
 </html>
+
+<app-destination-footer></app-destination-footer>

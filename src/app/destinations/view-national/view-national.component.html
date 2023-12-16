@@ -18,6 +18,7 @@
   placeholder="ID"
 />
 
+<app-destinations-nav></app-destinations-nav>
 <!DOCTYPE html>
 
 <link
@@ -60,9 +61,9 @@
         >
         <b
           ><p class="product-file-name">
-            {{ nationalTour?.name }}: &nbsp;
+            {{ nationalTour?.name }} Itinerary: &nbsp;
 
-            <a (click)="downloadFile(nationalFile.file_name)">download</a>
+            <a class="downloadLink" (click)="downloadFile(nationalFile.file_name)">Download</a>
           </p></b
         >
         <div class="rating">
@@ -93,3 +94,5 @@
     </div>
   </div>
 </div>
+
+<app-destination-footer></app-destination-footer>

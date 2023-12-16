@@ -15,6 +15,7 @@
   id="id"
   placeholder="ID"
 />
+<app-destinations-nav></app-destinations-nav>
 
 <!DOCTYPE html>
 
@@ -53,9 +54,9 @@
         >
         <b
           ><p class="product-file-name">
-            {{ camping?.name }}: &nbsp;
+            {{ camping?.name }} Itinerary: &nbsp;
 
-            <a (click)="downloadFile(campFile.file_name)">download</a>
+            <a class="downloadLink" (click)="downloadFile(campFile.file_name)">Download</a>
           </p></b
         >
 
@@ -86,3 +87,5 @@
     </div>
   </div>
 </div>
+
+<app-destination-footer></app-destination-footer>

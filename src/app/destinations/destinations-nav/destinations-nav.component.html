@@ -1,4 +1,6 @@
+<div class="toggle" onclick="toggleMenu();"></div>
 <header>
+
     <nav class="navbar fixed-top navbar-expand-md navbar-light bg-white">
       <div class="nav-logo">
         <img
@@ -27,6 +29,9 @@
         </ul>
 
       </div>
+      <div class="nav__toggle" id="nav-toggle">
+        <i class="ri-function-line"></i>
+      </div>
       <div class="hamburger-menu-wrap">
         <div class="hamburger-menu">
           <div class="line"></div>
@@ -36,3 +41,16 @@
       </div>
     </nav>
   </header>
+  <body>
+    <script type="text/javascript">
+      const toggleMenu = () => {
+        const menuToggle = document.querySelector('.toggle');
+        const navigation = document.querySelector('.navigation');
+        menuToggle.classList.toggle('active');
+        navigation.classList.toggle('active');
+      }
+  
+   
+    </script>
+  </body>
+

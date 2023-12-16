@@ -5,6 +5,9 @@ import { Component } from '@angular/core';
   templateUrl: './destinations-nav.component.html',
   styleUrls: ['./destinations-nav.component.css']
 })
+
 export class DestinationsNavComponent {
 
+
+  
 }
