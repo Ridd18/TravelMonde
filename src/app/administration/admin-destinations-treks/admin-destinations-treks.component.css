@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Lora");
 body {
   background: #CBC0D3;
-  height: 115vh;
+  height: 100vh;
+  width: 175vh;
 }
 
 /* div box styling */
@@ -216,3 +217,11 @@ input[type=checkbox] {
   color: #ce7d88;
   transition: 0.5s all ease;
 }
+
+.addFiles {
+  display: flex;
+ }
+ 
+ /* .container {
+   margin-top: 25vh;
+ } */

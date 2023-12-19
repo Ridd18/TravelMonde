@@ -1,33 +1,49 @@
-<html>
-  <head> </head>
-  <body>
-    <div class="container">
-      <div class="welcome">
-        <div class="pinkbox">
-          <div class="signin">
-            <h1>Add New Trek</h1>
-            <form class="more-padding" #addTrekForm="ngForm" autocomplete="off">
-              <input ngModel name="name" type="text" placeholder="name" />
-              <input ngModel name="place" type="text" placeholder="place" />
-              <input ngModel name="price" type="number" placeholder="price" />
-              <input ngModel name="days" type="number" placeholder="days" />
+<div class="addFiles">
+  <div class="nav">
+    <app-admin-nav></app-admin-nav>
+  </div>
+  <div class="body">
+    <html>
+      <head> </head>
+      <body>
+        <div class="container">
+          <div class="welcome">
+            <div class="pinkbox">
+              <div class="signin">
+                <h1>Add New Trek</h1>
+                <form
+                  class="more-padding"
+                  #addTrekForm="ngForm"
+                  autocomplete="off"
+                >
+                  <input ngModel name="name" type="text" placeholder="name" />
+                  <input ngModel name="place" type="text" placeholder="place" />
+                  <input
+                    ngModel
+                    name="price"
+                    type="number"
+                    placeholder="price"
+                  />
+                  <input ngModel name="days" type="number" placeholder="days" />
 
-              <button class="button submit" (click)="addTrek(addTrekForm)">
-                add
-              </button>
-            </form>
+                  <button class="button submit" (click)="addTrek(addTrekForm)">
+                    add
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <div class="rightbox">
+              <h2 class="title"><span>Travel</span><br />Monde</h2>
+              <p class="desc">pick your perfect <span>trek</span></p>
+              <img
+                class="flower"
+                src="https://preview.ibb.co/jvu2Un/0057c1c1bab51a0.jpg"
+              />
+            </div>
           </div>
         </div>
-
-        <div class="rightbox">
-          <h2 class="title"><span>Travel</span><br />Monde</h2>
-          <p class="desc">pick your perfect <span>trek</span></p>
-          <img
-            class="flower"
-            src="https://preview.ibb.co/jvu2Un/0057c1c1bab51a0.jpg"
-          />
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+      </body>
+    </html>
+  </div>
+</div>
