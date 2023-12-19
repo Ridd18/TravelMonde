@@ -12,26 +12,30 @@ export class NationalFilesComponent implements OnInit {
   message = '';
   fileName: string;
 
-  uploadedFiles: Array<File>;
+  uploadedFiles: Array<File> = [];
 
   constructor(private http: HttpClient, private router: Router) {}
   ngOnInit(): void {}
 
   onselectFile(event: any): void {
-    this.uploadedFiles = event.target.files;
+    this.uploadedFiles = <Array<File>>event.target.files;
   }
 
   async onSubmit() {
     const formData = new FormData();
+    const files: Array<File> = this.uploadedFiles;
+    console.log(files);
+
     for (var i = 0; i < this.uploadedFiles.length; i++) {
       this.fileName = this.uploadedFiles[i].name;
       console.log(this.fileName);
       formData.append(
-        'file',
+        'files',
         this.uploadedFiles[i],
         this.uploadedFiles[i].name
       );
     }
+    console.log('form data variable :   '+ formData.toString());
     this.http
       .post('http://localhost:3000/nationalTour/upload', formData)
       .subscribe((response) => {

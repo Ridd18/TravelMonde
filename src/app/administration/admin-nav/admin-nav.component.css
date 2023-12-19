@@ -17,4 +17,12 @@
 }
 
 
+.navbar-vertical.navbar-expand-lg>[class*=container] {
+    flex-direction: column;
+    align-items: stretch;
+    /* min-height: 100%; */
+    padding-left: 0;
+    padding-right: 0;
+}
+
 

@@ -1,64 +1,57 @@
-<html>
-  <head></head>
-  <body>
-    <div class="section">
-      <div class="container">
-        <form
-          (submit)="onSubmit()"
-          enctype="multipart/form-data "
-          autocomplete="off"
-          class="form"
-        >
-          <div class="control">
-            <h1>Upload File</h1>
+<div class="addFiles">
+  <div class="nav">
+    <app-admin-nav></app-admin-nav>
+  </div>
+  <div class="body">
+    <html>
+      <head></head>
+      <body>
+        <div class="section">
+          <div class="container">
+            <form
+              (submit)="onSubmit()"
+              enctype="multipart/form-data "
+              autocomplete="off"
+              class="form"
+            >
+              <div class="control">
+                <h1>Upload File</h1>
+              </div>
+              <div class="control block-cube block-input">
+                <input
+                  class="form-control"
+                  ref="file"
+                  type="file"
+                  (change)="onselectFile($event)"
+                  multiple
+                />
+                <div class="bg-top">
+                  <div class="bg-inner"></div>
+                </div>
+                <div class="bg-right">
+                  <div class="bg-inner"></div>
+                </div>
+                <div class="bg">
+                  <div class="bg-inner"></div>
+                </div>
+              </div>
+
+              <button class="btn block-cube block-cube-hover" type="submit">
+                <div class="bg-top">
+                  <div class="bg-inner"></div>
+                </div>
+                <div class="bg-right">
+                  <div class="bg-inner"></div>
+                </div>
+                <div class="bg">
+                  <div class="bg-inner"></div>
+                </div>
+                <div class="text">Submit</div>
+              </button>
+            </form>
           </div>
-          <div class="control block-cube block-input">
-            <input
-              class="form-control"
-              ref="file"
-              type="file"
-              (change)="onselectFile($event)"
-            />
-            <div class="bg-top">
-              <div class="bg-inner"></div>
-            </div>
-            <div class="bg-right">
-              <div class="bg-inner"></div>
-            </div>
-            <div class="bg">
-              <div class="bg-inner"></div>
-            </div>
-          </div>
-          <!-- <div class="control block-cube block-input">
-            <input
-              class="form-control"
-              type="text"
-              placeholder="trek name"
-            />
-            <div class="bg-top">
-              <div class="bg-inner"></div>
-            </div>
-            <div class="bg-right">
-              <div class="bg-inner"></div>
-            </div>
-            <div class="bg">
-              <div class="bg-inner"></div>
-            </div>
-          </div> -->
-          <button class="btn block-cube block-cube-hover" type="submit">
-            <div class="bg-top">
-              <div class="bg-inner"></div>
-            </div>
-            <div class="bg-right">
-              <div class="bg-inner"></div>
-            </div>
-            <div class="bg">
-              <div class="bg-inner"></div>
-            </div>
-            <div class="text">Submit</div>
-          </button>
-        </form>
-      </div>
-    </div>
-  </body>
-</html>
+        </div>
+      </body>
+    </html>
+  </div>
+</div>

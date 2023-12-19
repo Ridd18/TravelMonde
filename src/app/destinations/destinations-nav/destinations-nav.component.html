@@ -1,56 +1,69 @@
-<div class="toggle" onclick="toggleMenu();"></div>
+
 <header>
 
-    <nav class="navbar fixed-top navbar-expand-md navbar-light bg-white">
-      <div class="nav-logo">
-        <img
-          src="https://raw.githubusercontent.com/mustafadalga/tour-and-travel/master/assets/img/logo.svg"
-          alt=""
-        />
-      </div>
+  <nav class="navbar fixed-top navbar-expand-md navbar-light bg-white">
+    <div class="nav-logo">
+      <img
+        src="https://raw.githubusercontent.com/mustafadalga/tour-and-travel/master/assets/img/logo.svg"
+        alt=""
+      />
+    </div>
+    
       <div class="nav-right">
         <div class="nav-close-icon"></div>
         <ul class="nav-menu">
           <li class="nav-item">
-            <a routerLink="/destinations" routerLinkActive="active" class="nav-link active">Home</a>
+            <a
+              routerLink="/destinations"
+              routerLinkActive="active"
+              class="nav-link active"
+              >Home</a
+            >
           </li>
           <li class="nav-item">
-            <a routerLink="/destinations/treks" routerLinkActive="active" class="nav-link">Treks</a>
+            <a
+              routerLink="/destinations/treks"
+              routerLinkActive="active"
+              class="nav-link"
+              >Treks</a
+            >
           </li>
           <li class="nav-item">
-            <a routerLink="/destinations/camping" routerLinkActive="active" class="nav-link">Camping</a>
+            <a
+              routerLink="/destinations/camping"
+              routerLinkActive="active"
+              class="nav-link"
+              >Camping</a
+            >
           </li>
           <li class="nav-item">
-            <a routerLink="/destinations/national" routerLinkActive="active"  class="nav-link">National</a>
+            <a
+              routerLink="/destinations/national"
+              routerLinkActive="active"
+              class="nav-link"
+              >National</a
+            >
           </li>
           <li class="nav-item">
-            <a routerLink="/destinations/international" routerLinkActive="active"  class="nav-link">International</a>
+            <a
+              routerLink="/destinations/international"
+              routerLinkActive="active"
+              class="nav-link"
+              >International</a
+            >
           </li>
         </ul>
-
       </div>
-      <div class="nav__toggle" id="nav-toggle">
-        <i class="ri-function-line"></i>
-      </div>
-      <div class="hamburger-menu-wrap">
-        <div class="hamburger-menu">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-      </div>
-    </nav>
-  </header>
-  <body>
-    <script type="text/javascript">
-      const toggleMenu = () => {
-        const menuToggle = document.querySelector('.toggle');
-        const navigation = document.querySelector('.navigation');
-        menuToggle.classList.toggle('active');
-        navigation.classList.toggle('active');
-      }
-  
    
-    </script>
-  </body>
-
+    <div class="nav__toggle" id="nav-toggle">
+      <i class="ri-function-line"></i>
+    </div>
+    <div class="hamburger-menu-wrap">
+      <div class="hamburger-menu">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </nav>
+</header>

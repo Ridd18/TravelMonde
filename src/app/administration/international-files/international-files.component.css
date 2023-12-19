@@ -16,7 +16,8 @@ body {
   color: #fff;
   font-family: monospace, serif;
   letter-spacing: 0.05em;
-  height: 680px;
+  height: 100vh;
+  width: 175vh;
 }
 
 h1 {
@@ -166,8 +167,17 @@ h1 {
   opacity: 1;
 }
 .section {
-    display: flex;
-    margin-top: 20px;
-    font-family: 'FontAwesome';
-    justify-content: center;
+  display: flex;
+
+  font-family: 'FontAwesome';
+  justify-content: center;
+}
+
+
+.addFiles {
+display: flex;
+}
+
+.container {
+margin-top: 25vh;
 }
